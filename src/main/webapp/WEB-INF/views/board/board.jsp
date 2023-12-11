@@ -62,11 +62,11 @@
 			</a>
 		</li>
 
-		<!-- Comunity -->
+		<!-- Community -->
 		<li class="nav-item">
-			<a class="nav-link" href="/comunity/list">
+			<a class="nav-link" href="/community/list">
 				<i class="fa fa-comments-o" aria-hidden="true"></i>
-				<span>Comunity</span>
+				<span>Community</span>
 			</a>
 		</li>
 
@@ -421,7 +421,7 @@
 									<tr>
 										<th scope="row">${post.boardNo}</th>
 										<td>${post.userId}</td>
-										<td><a href="/comunity/detail/${post.boardNo}">${post.title}</a></td>
+										<td><a href="/community/detail/${post.boardNo}">${post.title}</a></td>
 										<td>${post.drawup}</td>
 										<td>${post.referenceNo}</td>
 										<td>${post.content}</td>
@@ -431,7 +431,7 @@
 							</table>
 							<button style= "float : right"
 									type="button"
-									onclick="location.href='/comunity/boardNew'"
+									onclick="location.href='/community/boardNew'"
 									class="btn btn-primary">글작성</button>
 						</table>
 					</div>

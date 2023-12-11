@@ -62,11 +62,11 @@
             </a>
         </li>
 
-        <!-- Comunity -->
+        <!-- Community -->
         <li class="nav-item">
-            <a class="nav-link" href="/comunity/list">
+            <a class="nav-link" href="/community/list">
                 <i class="fa fa-comments-o" aria-hidden="true"></i>
-                <span>Comunity</span>
+                <span>Community</span>
             </a>
         </li>
 
@@ -520,7 +520,7 @@
 
             $.ajax({
                 type: "post",
-                url: "/comunity/editDetail",
+                url: "/community/editDetail",
                 contentType: 'application/json',
                 data: JSON.stringify({
                     title: $('#board-title').val(),
@@ -532,7 +532,7 @@
                 success: function (result) {
                     if (result.result == 'ok') {
 
-                        location.href = '/comunity/list'
+                        location.href = '/community/list'
                     }
                 }
             });
@@ -542,7 +542,7 @@
 
     $('#board-cancel-btn').on('click', function () {
         if (confirm('글 수정을 취소하시겠습니까?')) {
-            location.href = '/comunity/list'
+            location.href = '/community/list'
         }
     });
 

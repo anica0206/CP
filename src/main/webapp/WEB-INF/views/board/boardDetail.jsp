@@ -507,7 +507,7 @@
 <script>
     $('#board-edit-btn').on('click', function () {
         if(confirm('글 수정을 하시겠습니까?')) {
-            location.href='/comunity/edit/' + $('#board-no').val();
+            location.href='/community/edit/' + $('#board-no').val();
         }
     });
 
@@ -515,7 +515,7 @@
         if(confirm('글을 삭제 하시겠습니까?')) {
             $.ajax({
                 type:"post",
-                url:"/comunity/delete",
+                url:"/community/delete",
                 contentType: 'application/json',
                 data: JSON.stringify({
                     boardNo : $('#board-no').val()
@@ -523,7 +523,7 @@
                 dataType:"json",
                 success:function(result){
                     if(result.result == 'ok') {
-                        location.href='/comunity/list'
+                        location.href='/community/list'
                     }
                 }
             });
@@ -532,7 +532,7 @@
 
     $('#board-cancel-btn').on('click', function () {
         if(confirm('리스트 페이지로 돌아가시겠습니까?')) {
-            location.href='/comunity/list'
+            location.href='/community/list'
         }
     });
 

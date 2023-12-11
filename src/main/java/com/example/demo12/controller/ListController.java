@@ -17,7 +17,7 @@ public class ListController {
     @Autowired
     private ListMapper listMapper;
 
-    @RequestMapping("/comunity/list")
+    @RequestMapping("/community/list")
     public String list(Model model) {
         List<Post> posts = listMapper.getPosts();
 
@@ -25,14 +25,14 @@ public class ListController {
         return "board/board";
     }
 
-    @RequestMapping("/comunity/boardNew")
+    @RequestMapping("/community/boardNew")
     public String boardNewController() throws Exception {
         return "board/boardNew";
     }
-    //경로명 comunity/list/boardNew 로 했었는데 안됐음.. 왜??안됐지
+    //경로명 community/list/boardNew 로 했었는데 안됐음.. 왜??안됐지
 
     //read
-    @RequestMapping("/comunity/detail/{boardNo}")
+    @RequestMapping("/community/detail/{boardNo}")
     public String detail(@PathVariable("boardNo") int boardNo, Model model) throws Exception {
         Post post1 = new Post();
         post1.setBoardNo(boardNo);
@@ -44,7 +44,7 @@ public class ListController {
         return "board/boardDetail";
     }
     //update
-    @RequestMapping("/comunity/edit/{boardNo}")
+    @RequestMapping("/community/edit/{boardNo}")
     public String edit(@PathVariable("boardNo") int boardNo, Model model) throws Exception {
         Post post1 = new Post();
         post1.setBoardNo(boardNo);
@@ -55,7 +55,7 @@ public class ListController {
         return "board/boardEdit";
     }
 
-    @RequestMapping(value = "/comunity/editDetail", method = RequestMethod.POST)
+    @RequestMapping(value = "/community/editDetail", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> editDetail(@RequestBody Post post) {
         listMapper.updateBoardByBoardId(post);
@@ -66,7 +66,7 @@ public class ListController {
         return resultMap;
     }
 
-    @RequestMapping(value = "/comunity/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/community/add", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> add(@RequestBody Post post) {
         listMapper.insertBoard(post);
@@ -77,7 +77,7 @@ public class ListController {
         return resultMap;
     }
 
-    @RequestMapping(value = "/comunity/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/community/delete", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> delete(@RequestBody Post post) {
         listMapper.deleteBoardByBoardId(post);
