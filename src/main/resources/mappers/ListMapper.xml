@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo12.mapper.ListMapper">
+    <select id="getPosts" resultType="com.example.demo12.model.Post">
+        SELECT
+            board_no,
+            user_id,
+            title,
+            drawup,
+            reference_no,
+            content
+        FROM BOARDS
+        ORDER BY board_no
+    </select>
+
+    <insert id="insertBoard" parameterType="com.example.demo12.model.Post">
+        insert into BOARDS(
+            user_id,
+            title,
+            content
+        ) values (
+                     #{userId},
+                     #{title},
+                     #{content}
+                 )
+    </insert>
+<!-- read -->
+    <select id="getBoardByBoardNo" parameterType="com.example.demo12.model.Post" resultType="com.example.demo12.model.Post">
+        SELECT
+            board_no,
+            user_id,
+            title,
+            drawup,
+            reference_no,
+            content
+        FROM BOARDS
+        where board_no = #{boardNo}
+    </select>
+
+    <update id="updateBoardByBoardId" parameterType="com.example.demo12.model.Post">
+        update BOARDS
+        set title = #{title},
+            content = #{content}
+        where board_no = #{boardNo}
+    </update>
+
+    <delete id="deleteBoardByBoardId" parameterType="com.example.demo12.model.Post">
+        delete from BOARDS
+        where board_no = #{boardNo}
+    </delete>
+</mapper>

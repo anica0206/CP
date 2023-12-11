@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo12.mapper.ReviewMapper">
+    <select id="getReview" resultType="com.example.demo12.model.Review">
+        SELECT
+           review_no,
+           user_id,
+           title,
+           drawup,
+           reference_no,
+           recommend,
+           course_no
+        FROM REVIEWS
+        ORDER BY review_no
+    </select>
+
+<!-- read -->
+    <select id="getReviewByReviewNo" parameterType="com.example.demo12.model.Review" resultType="com.example.demo12.model.Review">
+        SELECT
+            review_no,
+            user_id,
+            title,
+            drawup,
+            reference_no,
+            recommend,
+            course_no,
+            content
+        FROM REVIEWS
+        where review_no = #{reviewNo}
+    </select>
+
+    <insert id="insertReview" parameterType="com.example.demo12.model.Review">
+        insert into REVIEWS(
+            user_id,
+            title,
+            course_no,
+            content
+        ) values (
+            #{userId},
+            #{title},
+            #{courseNo},
+            #{content}
+        )
+
+    </insert>
+
+    <update id="updateReviewByReviewId" parameterType="com.example.demo12.model.Review">
+        update REVIEWS
+        set title = #{title},
+            course_no = #{courseNo},
+            content = #{content}
+        where review_no = #{reviewNo}
+    </update>
+
+    <delete id="deleteReviewByReviewId" parameterType="com.example.demo12.model.Review">
+        delete from REVIEWS
+        where review_no = #{reviewNo}
+    </delete>
+</mapper>
