@@ -15,23 +15,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @RequestMapping("/register")
-//    public String User() {
-//
-//        return "register";
-//    }
-//
-//    @RequestMapping(value = "/register/add", method = RequestMethod.POST)
-//    @ResponseBody
-//    public Map<String, String> add(@RequestBody User user) {
-//        userMapper.insertUser(user);
-//
-//        Map<String, String> resultMap = new HashMap<>();
-//        resultMap.put("result", "ok");
-//
-//        return resultMap;
-//    }
-
     @GetMapping("/register")
     public String toSignupPage() {  //회원가입 페이지
         return "register";

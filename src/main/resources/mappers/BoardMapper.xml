@@ -2,8 +2,10 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo12.mapper.ListMapper">
-    <select id="getPosts" resultType="com.example.demo12.model.Post">
+<mapper namespace="com.example.demo12.mapper.BoardMapper">
+
+
+    <select id="getBoards" resultType="com.example.demo12.model.Board">
         SELECT
             board_no,
             user_id,
@@ -15,19 +17,21 @@
         ORDER BY board_no
     </select>
 
-    <insert id="insertBoard" parameterType="com.example.demo12.model.Post">
+    <!-- 게시판 글 등록 -->
+    <insert id="insertBoard" parameterType="com.example.demo12.model.Board">
         insert into BOARDS(
             user_id,
             title,
             content
         ) values (
-                     #{userId},
-                     #{title},
-                     #{content}
-                 )
+             #{userId},
+             #{title},
+             #{content}
+         )
     </insert>
-<!-- read -->
-    <select id="getBoardByBoardNo" parameterType="com.example.demo12.model.Post" resultType="com.example.demo12.model.Post">
+
+    <!-- 조회 -->
+    <select id="getBoardByBoardNo" parameterType="int" resultType="com.example.demo12.model.Board">
         SELECT
             board_no,
             user_id,
@@ -39,14 +43,23 @@
         where board_no = #{boardNo}
     </select>
 
-    <update id="updateBoardByBoardId" parameterType="com.example.demo12.model.Post">
+    <!-- 게시판 글 수정 -->
+    <update id="updateBoardByBoardId" parameterType="com.example.demo12.model.Board">
         update BOARDS
         set title = #{title},
             content = #{content}
         where board_no = #{boardNo}
     </update>
 
-    <delete id="deleteBoardByBoardId" parameterType="com.example.demo12.model.Post">
+    <!-- 조회수 -->
+    <update id="updateBoardReferenceNo" parameterType="com.example.demo12.model.Board">
+        update BOARDS
+        set reference_no = #{referenceNo}
+        where board_no = #{boardNo}
+    </update>
+
+    <!-- 게시판 글 삭제 -->
+    <delete id="deleteBoardByBoardId" parameterType="com.example.demo12.model.Board">
         delete from BOARDS
         where board_no = #{boardNo}
     </delete>
