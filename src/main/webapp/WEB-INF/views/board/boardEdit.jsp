@@ -416,7 +416,7 @@
                                 <th>작성자</th>
                                 <td>
                                     <input id="board-username" name="title" value="${post.userId}" type="text"
-                                           placeholder="" class="form-control">
+                                           placeholder="" class="form-control" disabled>
                                 </td>
                             </tr>
                             <tr>

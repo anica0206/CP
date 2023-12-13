@@ -6,9 +6,9 @@ spring:
       suffix: .jsp
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
-    url: jdbc:oracle:thin:@192.168.0.28:1521/xe
-    username: scott
-    password: pcwk
+    url: jdbc:oracle:thin:@129.154.204.240:1521:hibdbcs
+    username: CP
+    password: PCWKpcwkj12_#
 
     hikari:
       connection-test-query: SELECT 1 FROM DUAL

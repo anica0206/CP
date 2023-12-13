@@ -428,13 +428,16 @@
                             </tr>
                         </table>
                         <div class="text-right">
-                            <button id="board-edit-btn" class="btn btn-primary btn-icon-split">
-                                <span class="text">수정</span>
-                            </button>
-
-                            <button id="board-delete-btn" class="btn btn-primary btn-icon-split">
-                                <span class="text">삭제</span>
-                            </button>
+                        <c:choose>
+                            <c:when test="${user.userId==post.userId}">
+                                <button id="board-edit-btn" class="btn btn-primary btn-icon-split">
+                                            <span class="text">수정</span>
+                               </button>
+                               <button id="board-delete-btn" class="btn btn-primary btn-icon-split">
+                                  <span class="text">삭제</span>
+                              </button>
+                            </c:when>
+                        </c:choose>
 
                             <button id="board-cancel-btn" class="btn btn-light btn-icon-split">
                                 <span class="text">취소</span>

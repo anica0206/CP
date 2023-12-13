@@ -352,7 +352,7 @@
                             aria-haspopup="true"
                             aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                  >Douglas McGee</span>
+                  >${user.name}</span>
                         <img class="img-profile rounded-circle"
                              src="/static/img/undraw_profile.svg">
                     </a>
@@ -416,8 +416,8 @@
                             <tr>
                                 <th>작성자</th>
                                 <td>
-                                    <input id="board-name" name="username" type="text" placeholder=""
-                                           class="form-control">
+                                    <input id="board-name" value=${user.userId} name="username" type="text" placeholder=""
+                                           class="form-control" disabled>
                                 </td>
                             </tr>
                             <tr>
@@ -543,7 +543,7 @@
 
     $('#board-cancel-btn').on('click', function () {
         if (confirm('글 작성을 취소하시겠습니까?')) {
-            location.href = '/board'
+            location.href = '/community/list'
         }
     });
 

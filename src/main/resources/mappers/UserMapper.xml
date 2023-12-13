@@ -17,7 +17,7 @@
             #{password},
             #{email},
             #{name},
-            SYSDATE,
+            #{birthday},
             1
         )
     </insert>
