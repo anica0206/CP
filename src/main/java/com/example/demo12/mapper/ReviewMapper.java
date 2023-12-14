@@ -15,4 +15,5 @@ public interface ReviewMapper {
 
     void updateReviewReferenceNo(Review review);
 
+    List<Course> getCoursesByUserId(String userId);
 }

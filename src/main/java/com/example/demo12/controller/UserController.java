@@ -1,14 +1,20 @@
 package com.example.demo12.controller;
 
+import com.example.demo12.model.Board;
+import com.example.demo12.model.Course;
+import com.example.demo12.model.Review;
 import com.example.demo12.model.UserVO;
 import com.example.demo12.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -57,5 +63,18 @@ public class UserController {
         session.invalidate();
         return "redirect:/login";
     }
+
+    @RequestMapping("/profile")
+    public String toProfilePage(HttpSession session, Model model) {
+        String id = (String) session.getAttribute("userId");
+        if (id != null) { // 로그인된 상태
+            UserVO userVO = userService.getUserById(id);
+            model.addAttribute("user", userVO);
+
+            return "profile";
+        }
+        return "redirect:/login";
+    }
+
 
 }

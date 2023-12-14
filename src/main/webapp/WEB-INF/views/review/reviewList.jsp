@@ -431,10 +431,14 @@
                             </c:forEach>
                             </tbody>
                         </table>
-                        <button style= "float : right"
-                                type="button"
-                                onclick="location.href='/review/new'"
-                                class="btn btn-primary">글작성</button>
+                        <c:choose>
+                            <c:when test="${!empty courses}">
+                                <button style= "float : right"
+                                    type="button"
+                                    onclick="location.href='/review/new'"
+                                    class="btn btn-primary">글작성</button>
+                            </c:when>
+                        </c:choose>
                     </div>
                 </div>
             </div>

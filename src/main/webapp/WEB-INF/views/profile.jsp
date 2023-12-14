@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> Project 1 - Dashboard</title>
+    <title>CareerPath::Profile</title>
 
     <!-- Custom fonts for this template-->
     <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,6 +21,15 @@
     <script src="https://kit.fontawesome.com/8fd9460f6d.js" crossorigin="anonymous"></script>
     <!-- Custom styles for this template-->
     <link href="/static/css/sb-admin-2.min.css" type="text/css" rel="stylesheet">
+    <script src="/static/https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="/static/https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="/static/sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="/static/https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/easygpt/default.css" />
+    <link href="/static/https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/static/C:\Users\user\Desktop\Desktop\sparta-gpt\css/style.css">
 
 
     <!--chartdiv1 Resource-->
@@ -29,51 +38,13 @@
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     <!-- chartdiv1 End-->
 
-    <script src="/static/js/chartdiv1.js" type="text/javascript"></script> <!-- 메인 그래프-->
-    <script src="/static/js/chartdiv2.js" type="text/javascript"></script> <!--  삼막대 그래프-->
-    <script src="/static/js/chartdiv3.js" type="text/javascript"></script> <!-- 일반 막대 그래프-->
-    <script src="/static/js/chartdiv4.js" type="text/javascript"></script> <!-- Reversed Value Axis-->
-    <script src="/static/js/chartdiv5.js" type="text/javascript"></script> <!-- Pareto Diagram-->
-
 
     <!-- Styles -->
 
-    <style>
-        #chartdiv1 {
-            width: 100%;
-            height: 300px;
-        }
-    </style>
-    <style>
-        #chartdiv2 {
-            width: 100%;
-            height: 300px;
-        }
-    </style>
-    <style>
-        #chartdiv3 {
-            width: 100%;
-            height: 300px;
-        }
-    </style>
-    <style>
-        #chartdiv4 {
-            width: 100%;
-            height: 300px;
-        }
-    </style>
-    <style>
-        #chartdiv5 {
-            width: 100%;
-            height: 300px;
-        }
-    </style>
-
-
+    <!-- /Styles -->
 </head>
 
 <body id="page-top">
-
 <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -84,7 +55,7 @@
         </a>
         <hr class="sidebar-divider my-0">
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="../../../../../../../Desktop/Desktop/sparta-gpt/index.html">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span>
             </a>
@@ -98,7 +69,7 @@
         <!-- Profile -->
 
         <li class="nav-item">
-            <a class="nav-link" href="/profile">
+            <a class="nav-link" href="#">
                 <i class="fa fa-id-card-o" aria-hidden="true"></i>
                 <span>Profile</span>
             </a>
@@ -236,69 +207,41 @@
 
             <!-- Begin Page Content -->
             <div class="container">
-
-                <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">3조 CareerPath </h1>
-                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                </div>
-
-
-
-                <!-- Content Row -->
-                <div class="container">
-                    <div class="row">
-                        <div class = "col-sm">
-
-                            <!-- Area Chart -->
-                            <div id="chartdiv1"></div>
-
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <!-- 프로필 카드 -->
+                        <div class="col-md-4">
+                            <div class="card" style="width: 18rem">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png">
+                                <div class="card-body">
+                                    <h5 class="card-title">${user.name}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <p class="card-text">
+                                        그냥 자유롭게 쓸 수 있게 칸 만들기
+                                    </p>
+                                    <div style="border-top: 1px solid #dee2e6; margin-top: auto; margin-bottom: 7px;"></div>
+                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <div style="border-top: 1px solid #dee2e6; margin-top: auto; margin-bottom: 5px;"></div>
+                                    <div class="text-end">
+                                        <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="background-color: rgba(0, 123, 255, 0.3);">
+                                            회원정보 수정
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- 1행 끝-->
-                <!-- 2행 시작-->
-                <div class="container">
-                    <div class="row">
-                        <div class = "col-sm">
-                            <div id="chartdiv2"></div> <!-- 삼막대 그래프-->
-                        </div>
-                        <div class = "col-sm">
-                            <div id="chartdiv3"></div> <!--막대글프 -->
-                        </div>
-                    </div>
-                </div>
-                <!-- 2행끝-->
-                <!-- 3행시작-->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm">
-                            <div id="chartdiv4"></div>
-                        </div>
-                        <div class="col-sm">
-                            <div id="chartdiv5"></div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-
-        </div>
-    </div>
-    <!-- End of Main Content -->
-
 
         <!-- Footer -->
 
         <!-- End of Footer -->
 
+            </div>
+        </div>
     </div>
-    <!-- End of Content Wrapper -->
-
-</div>
+    </div>
+            <!-- End of Content Wrapper -->
 <!-- End of Page Wrapper -->
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
