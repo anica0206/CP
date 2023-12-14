@@ -261,7 +261,7 @@
 								<tbody>
 								<c:forEach items="${posts}" var="post">
 									<tr>
-										<th scope="row">${post.row_num}</th>
+										<th scope="row">${post.boardNo}</th>
 										<td>${post.userId}</td>
 										<td><a href="/community/detail/${post.boardNo}">${post.title}</a></td>
 										<td>${post.referenceNo}</td>
