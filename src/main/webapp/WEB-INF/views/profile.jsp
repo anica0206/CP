@@ -215,7 +215,7 @@
                                 <img src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png">
                                 <div class="card-body">
                                     <h5 class="card-title">${user.name}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                    <h6 class="card-subtitle mb-2 text-muted"> </h6>
                                     <p class="card-text">
                                         그냥 자유롭게 쓸 수 있게 칸 만들기
                                     </p>
@@ -223,8 +223,8 @@
                                     <h6 class="card-subtitle mb-2 text-muted"></h6>
                                     <div style="border-top: 1px solid #dee2e6; margin-top: auto; margin-bottom: 5px;"></div>
                                     <div class="text-end">
-                                        <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="background-color: rgba(0, 123, 255, 0.3);">
-                                            회원정보 수정
+                                        <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="background-color: rgba(0, 123, 255, 0.2);">
+                                            저장
                                         </a>
                                     </div>
                                 </div>
