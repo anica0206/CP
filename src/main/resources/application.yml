@@ -10,6 +10,7 @@ spring:
     username: CP
     password: PCWKpcwkj12_#
 
+
     hikari:
       connection-test-query: SELECT 1 FROM DUAL
       connection-timeout: 600000
