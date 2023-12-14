@@ -7,4 +7,5 @@ public class Course {
     private long courseNo;
     private String courseName;
     private long academyNo;
+    private String academyName;
 }

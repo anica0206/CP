@@ -6,6 +6,7 @@ import com.example.demo12.model.Course;
 import com.example.demo12.model.Review;
 import com.example.demo12.model.UserVO;
 import com.example.demo12.service.BoardService;
+import com.example.demo12.service.CourseService;
 import com.example.demo12.service.ReviewService;
 import com.example.demo12.service.UserService;
 import org.apache.logging.log4j.LogManager;
@@ -32,6 +33,9 @@ public class ReviewController {
     private UserService userService;
 
     @Autowired
+    private CourseService courseService;
+
+    @Autowired
     ReviewService reviewService;
 
     @RequestMapping("/review")
@@ -41,7 +45,7 @@ public class ReviewController {
             UserVO userVO = userService.getUserById(id);
             model.addAttribute("user", userVO);
             List<Review> review = reviewService.getReviewList();
-            List<Course> courses = reviewService.getCourseHistorys(id);
+            List<Course> courses = courseService.getCourseHistorys(id);
 
             model.addAttribute("reviews",review);
             model.addAttribute("courses", courses);
@@ -59,7 +63,7 @@ public class ReviewController {
             UserVO userVO = userService.getUserById(id);
             model.addAttribute("user", userVO);
 
-            List<Course> courses = reviewService.getCourseHistorys(id);
+            List<Course> courses = courseService.getCourseHistorys(id);
             model.addAttribute("courses", courses);
 
             return "review/reviewNew";

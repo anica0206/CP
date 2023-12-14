@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo12.mapper.UserMapper">
 
+    <!-- 회원가입 -->
     <insert id="insertUser" parameterType="com.example.demo12.model.UserVO">
         insert into USERS(
             user_id,
@@ -22,6 +23,7 @@
         )
     </insert>
 
+    <!-- 아이디 조회 -->
     <select id="getUserById" resultType="com.example.demo12.model.UserVO">
         SELECT *
         FROM USERS

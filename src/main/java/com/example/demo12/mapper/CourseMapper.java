@@ -8,9 +8,8 @@ import java.util.List;
 
 
 @Mapper
-public interface UserMapper {
-    void insertUser(UserVO userVO); //signUp
-    UserVO getUserById(String userId);
-
+public interface CourseMapper {
     List<Course> getCourses();
+    List<Course> getCoursesByUserId(String userId);
+
 }

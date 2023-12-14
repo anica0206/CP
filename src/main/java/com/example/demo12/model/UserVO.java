@@ -13,4 +13,6 @@ public class UserVO {
     private String name;
     private String birthday;
     private int role;
+    private String desiredJob;
+    private String education;
 }

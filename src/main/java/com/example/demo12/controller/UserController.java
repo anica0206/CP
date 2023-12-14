@@ -64,17 +64,7 @@ public class UserController {
         return "redirect:/login";
     }
 
-    @RequestMapping("/profile")
-    public String toProfilePage(HttpSession session, Model model) {
-        String id = (String) session.getAttribute("userId");
-        if (id != null) { // 로그인된 상태
-            UserVO userVO = userService.getUserById(id);
-            model.addAttribute("user", userVO);
 
-            return "profile";
-        }
-        return "redirect:/login";
-    }
 
 
 }

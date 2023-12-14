@@ -35,7 +35,4 @@ public class ReviewService {
         reviewMapper.updateReviewReferenceNo(review);
     }
 
-    public List<Course> getCourseHistorys(String userId) {
-        return reviewMapper.getCoursesByUserId(userId);
-    }
 }

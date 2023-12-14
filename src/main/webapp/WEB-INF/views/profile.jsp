@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <html>
@@ -216,9 +217,19 @@
                                 <div class="card-body">
                                     <h5 class="card-title">${user.name}</h5>
                                     <h6 class="card-subtitle mb-2 text-muted"> </h6>
-                                    <p class="card-text">
-                                        그냥 자유롭게 쓸 수 있게 칸 만들기
-                                    </p>
+                                    <textarea id="board-content" class="form-control" name="message"
+                                                                                  placeholder="자유롭게 입력하세요." rows="7"></textarea> <br>
+                                    <select id="courses" class="form-select">
+                                        <c:forEach items="${courses}" var="course">
+                                            <option value=${course.courseNo}>${course.courseName} - ${course.academyName}</option>
+                                        </c:forEach>
+                                    </select> <br> <br>
+
+                                    <select id="education" class="form-select">
+                                        <option value="1">대졸</option>
+                                        <option value="1">고졸</option>
+                                    </select>
+
                                     <div style="border-top: 1px solid #dee2e6; margin-top: auto; margin-bottom: 7px;"></div>
                                     <h6 class="card-subtitle mb-2 text-muted"></h6>
                                     <div style="border-top: 1px solid #dee2e6; margin-top: auto; margin-bottom: 5px;"></div>

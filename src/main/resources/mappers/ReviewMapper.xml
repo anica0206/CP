@@ -70,12 +70,4 @@
         where review_no = #{reviewNo}
     </delete>
 
-    <select id="getCoursesByUserId" parameterType="String" resultType="com.example.demo12.model.Course">
-        SELECT
-            user_id, H.course_no, course_name
-        FROM historys H JOIN courses C
-        ON H.course_no = C.course_no
-        WHERE user_id = #{userId}
-    </select>
-
 </mapper>
