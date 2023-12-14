@@ -1,16 +1,12 @@
 package com.example.demo12.controller;
 
-import com.example.demo12.mapper.chartMapper;
 import com.example.demo12.model.UserVO;
-import com.example.demo12.model.chartMainVO;
 import com.example.demo12.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 public class HomeController {
@@ -27,18 +23,5 @@ public class HomeController {
             return "home";
         }
         return "redirect:/login";
-    }
-
-    public class chartMainController {
-
-        @Autowired
-        private chartMapper chartMap;
-
-        public String chart(Model model) {
-            List<chartMainVO> charts = chartMap.getChart();
-
-            model.addAttribute("chart", charts);
-            return "Chart";
-        }
     }
 }

@@ -35,7 +35,7 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-
+	<input id="board-no" type="hidden" value="${post.boardNo}"/>
 	<!-- Sidebar -->
 	<ul class="col-2 navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 		<a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
@@ -261,7 +261,7 @@
 								<tbody>
 								<c:forEach items="${posts}" var="post">
 									<tr>
-										<th scope="row">${post.boardNo}</th>
+										<th scope="row">${post.row_num}</th>
 										<td>${post.userId}</td>
 										<td><a href="/community/detail/${post.boardNo}">${post.title}</a></td>
 										<td>${post.referenceNo}</td>
