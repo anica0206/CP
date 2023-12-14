@@ -13,7 +13,7 @@
             reference_no,
             recommend,
             R.course_no as courseNo,
-            C.name as courseName
+            course_name as courseName
         FROM REVIEWS R JOIN COURSES C
         ON R.course_no = C.course_no
         ORDER BY review_no
@@ -30,7 +30,7 @@
             recommend,
             content,
             R.course_no as courseNo,
-            C.name as courseName
+            course_name as courseName
         FROM REVIEWS R JOIN COURSES C
         ON R.course_no = C.course_no
         where review_no = #{reviewNo}
@@ -69,4 +69,13 @@
         delete from REVIEWS
         where review_no = #{reviewNo}
     </delete>
+
+    <select id="getCoursesByUserId" parameterType="String" resultType="com.example.demo12.model.Course">
+        SELECT
+            user_id, H.course_no, course_name
+        FROM historys H JOIN courses C
+        ON H.course_no = C.course_no
+        WHERE user_id = #{userId}
+    </select>
+
 </mapper>

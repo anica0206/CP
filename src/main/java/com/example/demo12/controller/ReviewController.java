@@ -2,11 +2,14 @@ package com.example.demo12.controller;
 
 import com.example.demo12.mapper.ReviewMapper;
 import com.example.demo12.model.Board;
+import com.example.demo12.model.Course;
 import com.example.demo12.model.Review;
 import com.example.demo12.model.UserVO;
 import com.example.demo12.service.BoardService;
 import com.example.demo12.service.ReviewService;
 import com.example.demo12.service.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +22,8 @@ import java.util.Map;
 
 @Controller
 public class ReviewController {
+
+    final Logger LOG = LogManager.getLogger(getClass());
 
     @Autowired
     ReviewMapper reviewMapper;
@@ -36,8 +41,11 @@ public class ReviewController {
             UserVO userVO = userService.getUserById(id);
             model.addAttribute("user", userVO);
             List<Review> review = reviewService.getReviewList();
+            List<Course> courses = reviewService.getCourseHistorys(id);
 
             model.addAttribute("reviews",review);
+            model.addAttribute("courses", courses);
+
             return "review/reviewList";
         }
         return "redirect:/login";
@@ -50,6 +58,10 @@ public class ReviewController {
         if (id != null) { // 로그인된 상태
             UserVO userVO = userService.getUserById(id);
             model.addAttribute("user", userVO);
+
+            List<Course> courses = reviewService.getCourseHistorys(id);
+            model.addAttribute("courses", courses);
+
             return "review/reviewNew";
         }
         return "redirect:/login";
@@ -83,7 +95,7 @@ public class ReviewController {
             UserVO userVO = userService.getUserById(id);
             model.addAttribute("user", userVO);
 
-            Review review = reviewMapper.getReviewByReviewNo(reviewNo);
+            Review review = reviewService.getReviewByReviewNo(reviewNo);
 
             model.addAttribute("review", review);
 
@@ -95,7 +107,7 @@ public class ReviewController {
     @RequestMapping(value = "/review/add", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> add(@RequestBody Review review) {
-        reviewMapper.insertReview(review);
+        reviewService.addReview(review);
 
         Map<String, String> resultMap = new HashMap<>();
         resultMap.put("result", "ok");
@@ -106,7 +118,7 @@ public class ReviewController {
     @RequestMapping(value = "/review/editDetail", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> editDetail(@RequestBody Review review) {
-        reviewMapper.updateReviewByReviewId(review);
+        reviewService.updateReview(review);
 
         Map<String, String> resultMap = new HashMap<>();
         resultMap.put("result", "ok");
@@ -117,7 +129,7 @@ public class ReviewController {
     @RequestMapping(value = "/review/delete", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> delete(@RequestBody Review review) {
-        reviewMapper.deleteReviewByReviewId(review);
+        reviewService.deleteReview(review);
 
         Map<String, String> resultMap = new HashMap<>();
         resultMap.put("result", "ok");

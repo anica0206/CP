@@ -416,9 +416,9 @@
                                 <th>수료한 과정 이름</th>
                                 <td>
                                     <select id="review-course" class="form-select">
-                                        <option value="1">Java</option>
-                                        <option value="2">Python</option>
-                                        <option value="3">Spring</option>
+                                        <c:forEach items="${courses}" var="course">
+                                            <option value=${course.courseNo}>${course.courseName}</option>
+                                        </c:forEach>
                                     </select>
                                 </td>
                             </tr>

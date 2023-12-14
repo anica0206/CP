@@ -8,12 +8,11 @@ import java.util.Date;
 public class Review {
     private String userId;
     private String title;
-    private int courseNo;
+    private long courseNo;
     private int reviewNo;
     private String drawup;
     private int referenceNo;
     private int recommend;
     private String content;
-
     private String courseName;
 }

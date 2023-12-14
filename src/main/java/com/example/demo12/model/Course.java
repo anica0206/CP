@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Course {
-    private int courseNo;
-    private String name;
-    private int academyNo;
+    private long courseNo;
+    private String courseName;
+    private long academyNo;
 }
