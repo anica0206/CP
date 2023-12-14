@@ -35,7 +35,8 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-
+    <input id="review-no" type="hidden" value="${review.reviewNo}"/>
+    <!-- 번호 만들고 숨기기 -->
     <!-- Sidebar -->
     <ul class="col-2 navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
@@ -62,11 +63,11 @@
             </a>
         </li>
 
-        <!-- Community -->
+        <!-- community -->
         <li class="nav-item">
             <a class="nav-link" href="/community/list">
                 <i class="fa fa-comments-o" aria-hidden="true"></i>
-                <span>Community</span>
+                <span>community</span>
             </a>
         </li>
 
@@ -352,7 +353,7 @@
                             aria-haspopup="true"
                             aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                  >Douglas McGee</span>
+                  >${user.userId}</span>
                         <img class="img-profile rounded-circle"
                              src="/static/img/undraw_profile.svg">
                     </a>
@@ -398,104 +399,158 @@
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">리뷰게시판</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">리뷰 쓰기</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table  class ="table table-bordered"
-                                id ="dataTable"
-                                width ="100%"
+                        <table
+                                class="table table-bordered"
+                                width="100%"
                                 cellspacing="0">
-                            <thead>
                             <tr>
-                                <th scope="col">Review No</th>
-                                <th scope="col">작성자</th>
-                                <th scope="col">제목</th>
-                                <th scope="col">작성일</th>
-                                <th scope="col">조회수</th>
-                                <th scope="col">추천수</th>
-                                <th scope="col">과목코드</th>
+                                <th>제목</th>
+                                <td>
+                                    <!--<input id="review-title" name="title" type="text" placeholder="제목을 입력하세요." class="form-control">-->
+                                    <span>${review.title}</span>
+                                </td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${reviews}" var="review">
-                                <tr>
-                                    <th scope="row">${review.reviewNo}</th>
-                                    <td>${review.userId}</td>
-                                    <td><a href="/review/detail/${review.reviewNo}">${review.title}</a></td>
-                                    <td>${review.drawup}</td>
-                                    <td>${review.referenceNo}</td>
-                                    <td>${review.recommend}</td>
-                                    <td>${review.courseNo}</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
+                            <tr>
+                                <th>수료한 과정 이름</th>
+                                <td>
+                                    <span>${review.courseName}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>작성자</th>
+                                <td>
+                                    <!--<input id="review-username" name="title" type="text" placeholder="" class="form-control"> -->
+                                    <span>${review.userId}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>내용</th>
+                                <td>
+                                    <textarea id="review-content" class="form-control" name="message" placeholder="내용을 입력하세요." rows="7" readonly>${review.content}</textarea>
+                                </td>
+                            </tr>
                         </table>
-                        <button style= "float : right"
-                                type="button"
-                                onclick="location.href='/review/new'"
-                                class="btn btn-primary">글작성</button>
+                        <div class="text-right">
+                            <c:choose>
+                                <c:when test="${user.userId==review.userId}">
+                                    <button id="review-edit-btn" class="btn btn-primary btn-icon-split">
+                                                <span class="text">수정</span>
+                                   </button>
+                                   <button id="review-delete-btn" class="btn btn-primary btn-icon-split">
+                                      <span class="text">삭제</span>
+                                  </button>
+                                </c:when>
+                            </c:choose>
+
+                            <button id="review-cancel-btn" class="btn btn-light btn-icon-split">
+                                <span class="text">취소</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- End of Main Content -->
-
-
-            <!-- Footer -->
-            <!-- End of Footer -->
+            <!-- /.container-fluid -->
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Main Content -->
+
+
+        <!-- Footer -->
+        <!-- End of Footer -->
+    </div>
+    <!-- End of Content Wrapper -->
+</div>
+</div>
+<!-- End of Page Wrapper -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2021</span>
+        </div>
+    </div>
+</footer>
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <form id="logout" action="/logout" method="post">
+                   <a href="#" onclick="document.getElementById('logout').submit()" class="btn btn-primary">Logout</a>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
-    <!-- End of Page Wrapper -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Your Website 2021</span>
-            </div>
-        </div>
-    </footer>
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Bootstrap core JavaScript-->
+<script src="/static/vendor/jquery/jquery.min.js"></script>
+<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="/static/vendor/jquery/jquery.min.js"></script>
-    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="/static/js/sb-admin-2.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="/static/js/sb-admin-2.min.js"></script>
+<!-- Page level plugins -->
+<script src="/static/vendor/chart.js/Chart.min.js"></script>
 
-    <!-- Page level plugins -->
-    <script src="/static/vendor/chart.js/Chart.min.js"></script>
+<!-- Page level custom scripts -->
+<script src="/static/js/demo/chart-area-demo.js"></script>
+<script src="/static/js/demo/chart-pie-demo.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="/static/js/demo/chart-area-demo.js"></script>
-    <script src="/static/js/demo/chart-pie-demo.js"></script>
+<script>
+    $('#review-edit-btn').on('click', function () {
+        if(confirm('글 수정을 하시겠습니까?')) {
+            location.href='/review/edit/' + $('#review-no').val();
+        }
+    });
+
+    $('#review-delete-btn').on('click', function () {
+        if(confirm('글을 삭제 하시겠습니까?')) {
+            $.ajax({
+                type:"post",
+                url:"/review/delete",
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    reviewNo : $('#review-no').val()
+                }),
+                dataType:"json",
+                success:function(result){
+                    if(result.result == 'ok') {
+                        location.href='/review'
+                    }
+                }
+            });
+        }
+    });
+
+    $('#review-cancel-btn').on('click', function () {
+        if(confirm('리스트 페이지로 돌아가시겠습니까?')) {
+            location.href='/review'
+        }
+    });
+
+
+
+</script>
 
 </body>
 </html>

@@ -10,8 +10,10 @@ public class Review {
     private String title;
     private int courseNo;
     private int reviewNo;
-    private Date drawup;
+    private String drawup;
     private int referenceNo;
     private int recommend;
     private String content;
+
+    private String courseName;
 }

@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Course {
-    private int course_No;
+    private int courseNo;
     private String name;
-    private int academy_No;
+    private int academyNo;
 }

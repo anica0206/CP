@@ -36,7 +36,6 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
     <input id="review-no" type="hidden" value="${review.reviewNo}"/>
-    <!-- 번호 만들고 숨기기 -->
     <!-- Sidebar -->
     <ul class="col-2 navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
@@ -353,7 +352,7 @@
                             aria-haspopup="true"
                             aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                  >Douglas McGee</span>
+                  >${user.userId}</span>
                         <img class="img-profile rounded-circle"
                              src="/static/img/undraw_profile.svg">
                     </a>
@@ -410,15 +409,14 @@
                             <tr>
                                 <th>제목</th>
                                 <td>
-                                    <!--<input id="review-title" name="title" type="text" placeholder="제목을 입력하세요." class="form-control">-->
-                                    <span>${review.title}</span>
+                                    <input id="review-title" name="title" value="${review.title}" type="text" placeholder="제목을 입력하세요." class="form-control">
                                 </td>
                             </tr>
                             <tr>
                                 <th>수료한 과정 이름</th>
                                 <td>
                                     <select id="review-course" class="form-select">
-                                        <option value="1">Java</option>  <!-- 여기에 해당 되는 과목 코드랑 과정제목 적으면 됨 -->
+                                        <option value="1">Java</option>
                                         <option value="2">Python</option>
                                         <option value="3">Spring</option>
                                     </select>
@@ -427,24 +425,19 @@
                             <tr>
                                 <th>작성자</th>
                                 <td>
-                                    <!--<input id="review-username" name="title" type="text" placeholder="" class="form-control"> -->
-                                    <span>${review.userId}</span>
+                                    <input id="review-username" name="title" value="${review.userId}" type="text" placeholder="" class="form-control" disabled>
                                 </td>
                             </tr>
                             <tr>
                                 <th>내용</th>
                                 <td>
-                                    <textarea id="review-content" class="form-control" name="message" placeholder="내용을 입력하세요." rows="7" readonly>${review.content}</textarea>
+                                    <textarea id="review-content" class="form-control" name="message" placeholder="내용을 입력하세요." rows="7">${review.content}</textarea>
                                 </td>
                             </tr>
                         </table>
                         <div class="text-right">
                             <button id="review-edit-btn" class="btn btn-primary btn-icon-split">
                                 <span class="text">수정</span>
-                            </button>
-
-                            <button id="review-delete-btn" class="btn btn-primary btn-icon-split">
-                                <span class="text">삭제</span>
                             </button>
 
                             <button id="review-cancel-btn" class="btn btn-light btn-icon-split">
@@ -492,7 +485,9 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="/login.html">Logout</a>
+                <form id="logout" action="/logout" method="post">
+                   <a href="#" onclick="document.getElementById('logout').submit()" class="btn btn-primary">Logout</a>
+                </form>
             </div>
         </div>
     </div>
@@ -518,36 +513,49 @@
 <script>
     $('#review-edit-btn').on('click', function () {
         if(confirm('글 수정을 하시겠습니까?')) {
-            location.href='/review/edit/' + $('#review-no').val();
-        }
-    });
+            if($('#review-title').val() == '') {
+                alert('제목을 입력하세요.');
+                return;
+            }
 
-    $('#review-delete-btn').on('click', function () {
-        if(confirm('글을 삭제 하시겠습니까?')) {
+            if($('#review-username').val() == '') {
+                alert('사용자명을 입력하세요.');
+                return;
+            }
+
+            if($('#review-content').val() == '') {
+                alert('글 내용을 입력하세요.');
+                return;
+            }
+
             $.ajax({
                 type:"post",
-                url:"/review/delete",
+                url:"/review/editDetail",
                 contentType: 'application/json',
                 data: JSON.stringify({
+                    title : $('#review-title').val(),
+                    courseNo : $("#review-course option:selected").val(),
+                    userId : $('#review-username').val(),
+                    content : $('#review-content').val(),
                     reviewNo : $('#review-no').val()
                 }),
                 dataType:"json",
                 success:function(result){
                     if(result.result == 'ok') {
+
                         location.href='/review'
                     }
                 }
             });
+
         }
     });
 
     $('#review-cancel-btn').on('click', function () {
-        if(confirm('리스트 페이지로 돌아가시겠습니까?')) {
+        if(confirm('글 수정을 취소하시겠습니까?')) {
             location.href='/review'
         }
     });
-
-
 
 </script>
 

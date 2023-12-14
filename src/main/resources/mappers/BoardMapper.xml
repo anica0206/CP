@@ -10,7 +10,7 @@
             board_no,
             user_id,
             title,
-            drawup,
+            TO_CHAR(drawup, 'YYYY-MM-DD') as drawup,
             reference_no,
             content
         FROM BOARDS

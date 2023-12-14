@@ -29,7 +29,7 @@ public class BoardService {
     public void addBoard(Board board){
         boardMapper.insertBoard(board);
     }
-    public void modifyBoard(Board board){
+    public void updateBoard(Board board){
         boardMapper.updateBoardByBoardId(board);
     }
     public void deleteBoard(Board board){

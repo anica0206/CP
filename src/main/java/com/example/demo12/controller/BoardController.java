@@ -1,6 +1,5 @@
 package com.example.demo12.controller;
 
-import com.example.demo12.mapper.BoardMapper;
 import com.example.demo12.model.Board;
 import com.example.demo12.model.UserVO;
 import com.example.demo12.service.BoardService;
@@ -87,7 +86,7 @@ public class BoardController {
     @RequestMapping(value = "/community/editDetail", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> updateBoard(@RequestBody Board board) {
-        boardService.modifyBoard(board);
+        boardService.updateBoard(board);
 
         Map<String, String> resultMap = new HashMap<>();
         resultMap.put("result", "ok");

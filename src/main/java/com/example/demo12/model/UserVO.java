@@ -11,7 +11,6 @@ public class UserVO {
     private String password;
     private String email;
     private String name;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date birthday;
+    private String birthday;
     private int role;
 }

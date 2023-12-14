@@ -60,8 +60,8 @@
                                             id="name" name="name" placeholder="이름">
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="date" class="form-control form-control-user"
-                                            id="birthday" name="birthday" placeholder="생년월일">
+                                        <input  placeholder="생년월일" class="form-control form-control-user"
+                                            id="birthday" name="birthday" type="text" onfocus="(this.type='date')" onblur="(this.type='text')">
                                     </div>
                                 </div>
                                 <button type="submit" id="register-submit-btn" class="btn btn-primary btn-user btn-block">

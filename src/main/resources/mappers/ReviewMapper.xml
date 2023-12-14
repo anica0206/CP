@@ -3,21 +3,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo12.mapper.ReviewMapper">
-    <select id="getReview" resultType="com.example.demo12.model.Review">
+
+    <select id="getReviews" resultType="com.example.demo12.model.Review">
         SELECT
-           review_no,
-           user_id,
-           title,
-           drawup,
-           reference_no,
-           recommend,
-           course_no
-        FROM REVIEWS
+            review_no,
+            user_id,
+            title,
+            TO_CHAR(drawup, 'YYYY-MM-DD') as drawup,
+            reference_no,
+            recommend,
+            R.course_no as courseNo,
+            C.name as courseName
+        FROM REVIEWS R JOIN COURSES C
+        ON R.course_no = C.course_no
         ORDER BY review_no
     </select>
 
 <!-- read -->
-    <select id="getReviewByReviewNo" parameterType="com.example.demo12.model.Review" resultType="com.example.demo12.model.Review">
+    <select id="getReviewByReviewNo" parameterType="int" resultType="com.example.demo12.model.Review">
         SELECT
             review_no,
             user_id,
@@ -25,9 +28,11 @@
             drawup,
             reference_no,
             recommend,
-            course_no,
-            content
-        FROM REVIEWS
+            content,
+            R.course_no as courseNo,
+            C.name as courseName
+        FROM REVIEWS R JOIN COURSES C
+        ON R.course_no = C.course_no
         where review_no = #{reviewNo}
     </select>
 
@@ -45,6 +50,12 @@
         )
 
     </insert>
+
+    <update id="updateReviewReferenceNo" parameterType="com.example.demo12.model.Review">
+        update REVIEWS
+        set reference_no = #{referenceNo}
+        where review_no = #{reviewNo}
+    </update>
 
     <update id="updateReviewByReviewId" parameterType="com.example.demo12.model.Review">
         update REVIEWS

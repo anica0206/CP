@@ -10,8 +10,7 @@ public class Board {
     private String userId;
     private String title;
     private String content;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date drawup;
+    private String drawup;
     private int referenceNo;
     private int boardNo;
 }

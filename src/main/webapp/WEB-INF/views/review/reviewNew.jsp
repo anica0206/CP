@@ -352,7 +352,7 @@
                             aria-haspopup="true"
                             aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small"
-                  >Douglas McGee</span>
+                  >${user.userId}</span>
                         <img class="img-profile rounded-circle"
                              src="/static/img/undraw_profile.svg">
                     </a>
@@ -425,7 +425,7 @@
                             <tr>
                                 <th>작성자</th>
                                 <td>
-                                    <input id="review-username" name="title" type="text" placeholder="" class="form-control">
+                                    <input id="review-userid" name="user_id" type="text" value=${user.userId} class="form-control" disabled>
                                     <!-- USERS 테이블의 user_id 데이터로 작성해야함  -->
                                 </td>
                             </tr>
@@ -486,7 +486,9 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="/login.html">Logout</a>
+                <form id="logout" action="/logout" method="post">
+                   <a href="#" onclick="document.getElementById('logout').submit()" class="btn btn-primary">Logout</a>
+                </form>
             </div>
         </div>
     </div>
@@ -517,7 +519,7 @@
                 return;
             }
 
-            if($('#review-username').val() == '') {
+            if($('#review-userid').val() == '') {
                 alert('사용자명을 입력하세요.');
                 return;
             }
@@ -533,8 +535,8 @@
                 contentType: 'application/json',
                 data: JSON.stringify({
                     title : $('#review-title').val(),
-                    courseNo : $("#review-course option:selected").val(),
-                    userId : $('#review-username').val(),
+                    courseNo : $('#review-course option:selected').val(),
+                    userId : $('#review-userid').val(),
                     content : $('#review-content').val()
                 }),
                 dataType:"json",
