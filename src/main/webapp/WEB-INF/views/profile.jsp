@@ -217,9 +217,6 @@
                                 <div class="card-body">
                                     <h5 class="card-title">${user.name}</h5>
                                     <select name="levelIntValue" id="levelIntValue" class="select">
-                                        <option value="1">BASIC</option>
-                                        <option value="2">SILVER</option>
-                                        <option value="3">GOLD</option>
                                     </select>
                                     <%--<h6 class="card-subtitle mb-2 text-muted"> </h6>--%>
                                     <textarea id="board-content" class="form-control" name="message"

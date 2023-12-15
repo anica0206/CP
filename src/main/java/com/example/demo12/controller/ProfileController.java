@@ -29,6 +29,8 @@ public class ProfileController {
             model.addAttribute("user", userVO);
             List<Course> courses = courseService.getCourseList();
             model.addAttribute("courses", courses);
+            List<Jobs> jobsList = jobsService.getAllJobs();
+            model.addAttribute("jobsList", jobsList);
 
             return "profile";
         }
