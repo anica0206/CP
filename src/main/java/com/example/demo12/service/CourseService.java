@@ -18,8 +18,10 @@ public class CourseService {
     public List<Course> getCourseList(){
         return courseMapper.getCourses();
     }
-
     public List<Course> getCourseHistorys(String userId) {
         return courseMapper.getCoursesByUserId(userId);
+    }
+    public List<Course> getCourseHistorysNoReview(String userId) {
+        return courseMapper.getCoursesByUserIdNoReview(userId);
     }
 }

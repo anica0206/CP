@@ -30,7 +30,6 @@ public class ReviewService {
     public void deleteReview(Review review){
         reviewMapper.deleteReviewByReviewId(review);
     }
-
     public void addReferenceNo(Review review) {
         reviewMapper.updateReviewReferenceNo(review);
     }

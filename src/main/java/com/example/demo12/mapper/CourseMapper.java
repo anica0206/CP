@@ -11,5 +11,6 @@ import java.util.List;
 public interface CourseMapper {
     List<Course> getCourses();
     List<Course> getCoursesByUserId(String userId);
+    List<Course> getCoursesByUserIdNoReview(String userId);
 
 }

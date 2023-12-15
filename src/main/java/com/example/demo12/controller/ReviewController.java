@@ -46,9 +46,11 @@ public class ReviewController {
             model.addAttribute("user", userVO);
             List<Review> review = reviewService.getReviewList();
             List<Course> courses = courseService.getCourseHistorys(id);
+            List<Course> coursesReview = courseService.getCourseHistorysNoReview(id);
 
             model.addAttribute("reviews",review);
             model.addAttribute("courses", courses);
+            model.addAttribute("coursesR", coursesReview);
 
             return "review/reviewList";
         }
@@ -63,8 +65,8 @@ public class ReviewController {
             UserVO userVO = userService.getUserById(id);
             model.addAttribute("user", userVO);
 
-            List<Course> courses = courseService.getCourseHistorys(id);
-            model.addAttribute("courses", courses);
+            List<Course> coursesReview = courseService.getCourseHistorysNoReview(id);
+            model.addAttribute("courses", coursesReview);
 
             return "review/reviewNew";
         }
@@ -100,8 +102,10 @@ public class ReviewController {
             model.addAttribute("user", userVO);
 
             Review review = reviewService.getReviewByReviewNo(reviewNo);
-
             model.addAttribute("review", review);
+
+            List<Course> coursesReview = courseService.getCourseHistorysNoReview(id);
+            model.addAttribute("courses", coursesReview);
 
             return "review/reviewUpdate";
         }

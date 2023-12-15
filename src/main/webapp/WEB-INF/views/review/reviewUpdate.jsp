@@ -56,7 +56,7 @@
 
         <!-- Profile -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/profile">
                 <i class="fa fa-id-card-o" aria-hidden="true"></i>
                 <span>Profile</span>
             </a>
@@ -80,7 +80,7 @@
 
         <!-- Training program recommendation -->
         <li class="nav-item">
-            <a class="nav-link" href="/Recommend/">
+            <a class="nav-link" href="/recommend/">
                 <i class="fa fa-compass" aria-hidden="true"></i>
                 <span>Program Recommendation</span>
             </a>
@@ -415,11 +415,11 @@
                             <tr>
                                 <th>수료한 과정 이름</th>
                                 <td>
-                                    <select id="review-course" class="form-select">
-                                        <option value="1">Java</option>
-                                        <option value="2">Python</option>
-                                        <option value="3">Spring</option>
-                                    </select>
+                                   <select id="review-course" class="form-select">
+                                       <c:forEach items="${courses}" var="course">
+                                           <option value=${course.courseNo}>${course.courseName} - ${course.academyName}</option>
+                                       </c:forEach>
+                                   </select>
                                 </td>
                             </tr>
                             <tr>

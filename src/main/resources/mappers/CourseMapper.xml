@@ -25,4 +25,26 @@
         WHERE user_id = #{userId}
     </select>
 
+    <!-- 리뷰 쓴 거 빼고 -->
+    <select id="getCoursesByUserIdNoReview" parameterType="String" resultType="com.example.demo12.model.Course">
+        SELECT
+            H.user_id, H.course_no, course_name, academy_name
+            FROM historys H
+            JOIN courses C
+                ON H.course_no = C.course_no
+            JOIN academys A
+                ON C.academy_no = C.academy_no
+            WHERE H.user_id = #{userId}
+        MINUS
+            SELECT
+            H.user_id, H.course_no, course_name, academy_name
+            FROM historys H JOIN reviews R
+                ON H.course_no = R.course_no
+            JOIN courses C
+                ON H.course_no = C.course_no
+            JOIN academys A
+                ON C.academy_no = C.academy_no
+            WHERE R.user_id = #{userId}
+    </select>
+
 </mapper>

@@ -56,7 +56,7 @@
 
         <!-- Profile -->
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/profile">
                 <i class="fa fa-id-card-o" aria-hidden="true"></i>
                 <span>Profile</span>
             </a>
@@ -80,7 +80,7 @@
 
         <!-- Training program recommendation -->
         <li class="nav-item">
-            <a class="nav-link" href="/Recommend/">
+            <a class="nav-link" href="/recommend/">
                 <i class="fa fa-compass" aria-hidden="true"></i>
                 <span>Program Recommendation</span>
             </a>
