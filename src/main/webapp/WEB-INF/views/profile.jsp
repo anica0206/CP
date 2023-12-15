@@ -216,7 +216,12 @@
                                 <img src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png">
                                 <div class="card-body">
                                     <h5 class="card-title">${user.name}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted"> </h6>
+                                    <select name="levelIntValue" id="levelIntValue" class="select">
+                                        <option value="1">BASIC</option>
+                                        <option value="2">SILVER</option>
+                                        <option value="3">GOLD</option>
+                                    </select>
+                                    <%--<h6 class="card-subtitle mb-2 text-muted"> </h6>--%>
                                     <textarea id="board-content" class="form-control" name="message"
                                                                                   placeholder="자유롭게 입력하세요." rows="7"></textarea> <br>
                                     <select id="courses" class="form-select">
