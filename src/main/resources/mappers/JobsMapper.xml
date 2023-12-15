@@ -6,8 +6,8 @@
 
 
     <select id="getJobs" resultType="com.example.demo12.model.Job">
-        SELECT *
-        FROM JOBS;
+        SELECT j_name
+        FROM JOBS
     </select>
 
 </mapper>
