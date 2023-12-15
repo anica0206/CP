@@ -27,6 +27,8 @@
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+
     <!-- chartdiv1 End-->
 
     <script src="/static/js/chartdiv1.js" type="text/javascript"></script> <!-- 메인 그래프-->
@@ -78,7 +80,7 @@
     <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="col-2 navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
             <div class="sidebar-brand-text mx-3">CareerPath <sup></sup></div>
         </a>
@@ -155,7 +157,7 @@
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
-    <div id="content-wrapper" class="col-10 d-flex flex-column">
+    <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
         <div id="content">
@@ -250,10 +252,10 @@
                 <div class="container">
                     <div class="row">
                         <div class = "col-sm">
-
+                            <div class="card shadow mb-4">
                             <!-- Area Chart -->
-                            <div id="chartdiv1"></div>
-
+                                 <div id="chartdiv1"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -263,10 +265,15 @@
                 <div class="container">
                     <div class="row">
                         <div class = "col-sm">
-                            <div id="chartdiv2"></div> <!-- 삼막대 그래프-->
+                            <div class="card shadow mb-4">
+                                <div id="chartdiv2"></div> <!-- 삼막대 그래프-->
+                            </div>
                         </div>
+
                         <div class = "col-sm">
-                            <div id="chartdiv3"></div> <!--막대글프 -->
+                            <div class="card shadow mb-4">
+                                <div id="chartdiv3"></div> <!--막대글프 -->
+                           </div>
                         </div>
                     </div>
                 </div>
@@ -275,10 +282,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm">
-                            <div id="chartdiv4"></div>
+                            <div class="card shadow mb-4">
+                                <div id="chartdiv4"></div>
+                            </div>
                         </div>
                         <div class="col-sm">
-                            <div id="chartdiv5"></div>
+                            <div class="card shadow mb-4">
+                                <div id="chartdiv5"></div>
+                            </div>
                         </div>
                     </div>
                 </div>

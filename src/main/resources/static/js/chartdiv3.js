@@ -1,105 +1,128 @@
-am5.ready(function(){
-
+am5.ready(function() {
 
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-var root = am5.Root.new("chartdiv3");
+  var root = am5.Root.new("chartdiv3");
 
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([
-  am5themes_Animated.new(root)
-]);
+  root.setThemes([
+    am5themes_Animated.new(root)
+  ]);
 
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
-var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: false,
-  panY: false,
-  wheelX: "panX",
-  wheelY: "zoomX"
-}));
+  var chart = root.container.children.push(am5xy.XYChart.new(root, {
+    panX: false,
+    panY: false,
+    wheelX: "panX",
+    wheelY: "zoomX",
+    layout: root.verticalLayout
+  }));
 
 
-// Add cursor
-// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
-  behavior: "zoomX"
-}));
-cursor.lineY.set("visible", false);
+// Add legend
+// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
+  var legend = chart.children.push(
+      am5.Legend.new(root, {
+        centerX: am5.p50,
+        x: am5.p50
+      })
+  );
 
-var date = new Date();
-date.setHours(0, 0, 0, 0);
-var value = 100;
-
-function generateData() {
-  value = Math.round((Math.random() * 10 - 5) + value);
-  am5.time.add(date, "day", 1);
-  return {
-    date: date.getTime(),
-    value: value
-  };
-}
-
-function generateDatas(count) {
-  var data = [];
-  for (var i = 0; i < count; ++i) {
-    data.push(generateData());
-  }
-  return data;
-}
+  var data   = [{
+    "year": "2019",
+    "europe": 264461,
+    "namerica": 468928,
+    "asia": 418037
+  }, {
+    "year": "2022",
+    "europe": 2.6,
+    "namerica": 2.7,
+    "asia": 2.2
+  }, {
+    "year": "2023",
+    "europe": 2.8,
+    "namerica": 2.9,
+    "asia": 2.4
+  }]
 
 
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-var xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
-  maxDeviation: 0,
-  baseInterval: {
-    timeUnit: "day",
-    count: 1
-  },
-  renderer: am5xy.AxisRendererX.new(root, {
-    minGridDistance: 60
-  }),
-  tooltip: am5.Tooltip.new(root, {})
-}));
+  var xRenderer = am5xy.AxisRendererX.new(root, {
+    cellStartLocation: 0.1,
+    cellEndLocation: 0.9
+  })
 
-var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  renderer: am5xy.AxisRendererY.new(root, {})
-}));
+  var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+    categoryField: "year",
+    renderer: xRenderer,
+    tooltip: am5.Tooltip.new(root, {})
+  }));
+
+  xRenderer.grid.template.setAll({
+    location: 1
+  })
+
+  xAxis.data.setAll(data);
+
+  var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+    renderer: am5xy.AxisRendererY.new(root, {
+      strokeOpacity: 0.1
+    })
+  }));
 
 
 // Add series
 // https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-  name: "Series",
-  xAxis: xAxis,
-  yAxis: yAxis,
-  valueYField: "value",
-  valueXField: "date",
-  tooltip: am5.Tooltip.new(root, {
-    labelText: "{valueY}"
-  })
-}));
+  function makeSeries(name, fieldName) {
+    var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+      name: name,
+      xAxis: xAxis,
+      yAxis: yAxis,
+      valueYField: fieldName,
+      categoryXField: "year"
+    }));
 
-series.columns.template.setAll({ strokeOpacity: 0 })
+    series.columns.template.setAll({
+      tooltipText: "{name}, {categoryX}:{valueY}",
+      width: am5.percent(90),
+      tooltipY: 0,
+      strokeOpacity: 0
+    });
 
+    series.data.setAll(data);
 
-// Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
-chart.set("scrollbarX", am5.Scrollbar.new(root, {
-  orientation: "horizontal"
-}));
+    // Make stuff animate on load
+    // https://www.amcharts.com/docs/v5/concepts/animations/
+    series.appear();
 
-var data = generateDatas(50);
-series.data.setAll(data);
+    series.bullets.push(function() {
+      return am5.Bullet.new(root, {
+        locationY: 0,
+        sprite: am5.Label.new(root, {
+          text: "{valueY}",
+          fill: root.interfaceColors.get("alternativeText"),
+          centerY: 0,
+          centerX: am5.p50,
+          populateText: true
+        })
+      });
+    });
+    legend.data.push(series);
+  }
+
+  makeSeries("구직인원", "europe");
+  makeSeries("구직건수", "namerica");
+  makeSeries("취업건수", "asia");
+
 
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/
-series.appear(1000);
-chart.appear(1000, 100);
+  chart.appear(1000, 100);
 
 }); // end am5.ready()

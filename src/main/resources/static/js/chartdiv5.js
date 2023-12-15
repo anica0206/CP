@@ -1,173 +1,82 @@
 
-am5.ready(function() {
+  am5.ready(function() {
 
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-var root = am5.Root.new("chartdiv5");
+  var root = am5.Root.new("chartdiv5");
 
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([
+  root.setThemes([
   am5themes_Animated.new(root)
-]);
+  ]);
 
 
 // Create chart
-// https://www.amcharts.com/docs/v5/charts/xy-chart/
-var chart = root.container.children.push(am5xy.XYChart.new(root, {
-  panX: false,
-  panY: false,
-  wheelX: "panX",
-  wheelY: "zoomX",
-  layout: root.verticalLayout
+// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+  var chart = root.container.children.push(am5percent.PieChart.new(root, {
+  layout: root.verticalLayout,
+  innerRadius: am5.percent(50),
+    Radius: am5.percent(100)
 }));
 
-var colors = chart.get("colors");
 
-var data = [{
-  country: "US",
-  visits: 725
-}, {
-  country: "UK",
-  visits: 625
-}, {
-  country: "China",
-  visits: 602
-}, {
-  country: "Japan",
-  visits: 509
-}, {
-  country: "Germany",
-  visits: 322
-}, {
-  country: "France",
-  visits: 214
-}, {
-  country: "India",
-  visits: 204
-}, {
-  country: "Spain",
-  visits: 198
-}, {
-  country: "Netherlands",
-  visits: 165
-}, {
-  country: "South Korea",
-  visits: 93
-}, {
-  country: "Canada",
-  visits: 41
-}];
+// Create series
+// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+  var series = chart.series.push(am5percent.PieSeries.new(root, {
+  valueField: "value",
+  categoryField: "category",
+  alignLabels: false,
+  disable: true
+  }));
 
-prepareParetoData();
-
-function prepareParetoData() {
-  var total = 0;
-
-  for (var i = 0; i < data.length; i++) {
-    var value = data[i].visits;
-    total += value;
-  }
-
-  var sum = 0;
-  for (var i = 0; i < data.length; i++) {
-    var value = data[i].visits;
-    sum += value;
-    data[i].pareto = sum / total * 100;
-  }
-}
-
-
-
-// Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-var xRenderer = am5xy.AxisRendererX.new(root, {
-  minGridDistance: 30
-})
-
-var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-  categoryField: "country",
-  renderer: xRenderer
-}));
-
-xRenderer.grid.template.setAll({
-  location: 1
-})
-
-xRenderer.labels.template.setAll({
-  paddingTop: 20
+  series.labels.template.setAll({
+  textType: "circular",
+  centerX: 0,
+  centerY: 0
 });
 
-xAxis.data.setAll(data);
 
-var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  renderer: am5xy.AxisRendererY.new(root, {
-    strokeOpacity: 0.1
-  })
+// Set data
+// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+  series.data.setAll([
+    { value: 10, category: "빅데이터" },
+    // { value: 1, category: "게임개발" },
+    // { value: 6, category: "secure coding" },
+    { value: 9, category: "AI" },
+    // { value: 3, category: "정보처리기사" },
+    // { value: 5, category: "APP" },
+    // { value: 5, category: "AWS" },
+    { value: 3, category: "C/C++" },
+    // { value: 4, category: "IoT" },
+    { value: 30, category: "Java" },
+    // { value: 1, category: "Node.js" },
+    // { value: 1, category: "Linux" },
+    { value: 17, category: "Python" },
+    // { value: 5, category: "React" },
+    { value: 3, category: "Spring" },
+    { value: 3, category: "SQL" },
+    // { value: 1, category: "SWIFT" },
+    // { value: 11, category: "UIUX" },
+    { value: 13, category: "WEB" }
+  ]);
+
+
+// Create legend
+// https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
+  var legend = chart.children.push(am5.Legend.new(root, {
+  centerX: am5.percent(50),
+  x: am5.percent(50),
+  marginTop: 15,
+  marginBottom: 15,
 }));
 
-var paretoAxisRenderer = am5xy.AxisRendererY.new(root, { opposite: true });
-var paretoAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-  renderer: paretoAxisRenderer,
-  min: 0,
-  max: 100,
-  strictMinMax: true
-}));
-
-paretoAxisRenderer.grid.template.set("forceHidden", true);
-paretoAxis.set("numberFormat", "#'%");
+  legend.data.setAll(series.dataItems);
 
 
-// Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-  xAxis: xAxis,
-  yAxis: yAxis,
-  valueYField: "visits",
-  categoryXField: "country"
-}));
-
-series.columns.template.setAll({
-  tooltipText: "{categoryX}: {valueY}",
-  tooltipY: 0,
-  strokeOpacity: 0,
-  cornerRadiusTL: 6,
-  cornerRadiusTR: 6
-});
-
-series.columns.template.adapters.add("fill", function(fill, target) {
-  return chart.get("colors").getIndex(series.dataItems.indexOf(target.dataItem));
-})
-
-
-// pareto series
-var paretoSeries = chart.series.push(am5xy.LineSeries.new(root, {
-  xAxis: xAxis,
-  yAxis: paretoAxis,
-  valueYField: "pareto",
-  categoryXField: "country",
-  stroke: root.interfaceColors.get("alternativeBackground"),
-  maskBullets: false
-}));
-
-paretoSeries.bullets.push(function() {
-  return am5.Bullet.new(root, {
-    locationY: 1,
-    sprite: am5.Circle.new(root, {
-      radius: 5,
-      fill: series.get("fill"),
-      stroke: root.interfaceColors.get("alternativeBackground")
-    })
-  })
-})
-
-series.data.setAll(data);
-paretoSeries.data.setAll(data);
-
-// Make stuff animate on load
-// https://www.amcharts.com/docs/v5/concepts/animations/
-series.appear();
-chart.appear(1000, 100);
+// Play initial series animation
+// https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+  series.appear(1000, 100);
 
 }); // end am5.ready()
