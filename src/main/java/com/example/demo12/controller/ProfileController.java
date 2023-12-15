@@ -1,13 +1,14 @@
 package com.example.demo12.controller;
 
 import com.example.demo12.model.Course;
+import com.example.demo12.model.Job;
 import com.example.demo12.model.UserVO;
 import com.example.demo12.service.CourseService;
+import com.example.demo12.service.JobsService;
 import com.example.demo12.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -21,6 +22,9 @@ public class ProfileController {
     @Autowired
     private CourseService courseService;
 
+    @Autowired
+    private JobsService jobsService;
+
     @RequestMapping("/profile")
     public String toProfilePage(HttpSession session, Model model) {
         String id = (String) session.getAttribute("userId");
@@ -29,8 +33,8 @@ public class ProfileController {
             model.addAttribute("user", userVO);
             List<Course> courses = courseService.getCourseList();
             model.addAttribute("courses", courses);
-            List<Jobs> jobsList = jobsService.getAllJobs();
-            model.addAttribute("jobsList", jobsList);
+            List<Job> jobs = jobsService.getJobsList();
+            model.addAttribute("jobs", jobs);
 
             return "profile";
         }

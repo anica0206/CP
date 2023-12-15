@@ -216,7 +216,10 @@
                                 <img src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png">
                                 <div class="card-body">
                                     <h5 class="card-title">${user.name}</h5>
-                                    <select name="levelIntValue" id="levelIntValue" class="select">
+                                    <select id="jobs" class="form-select">
+                                        <c:forEach items="${jobs}" var="job">
+                                            <option value=${job.jobName}>${job.jobName}</option>
+                                        </c:forEach>
                                     </select>
                                     <%--<h6 class="card-subtitle mb-2 text-muted"> </h6>--%>
                                     <textarea id="board-content" class="form-control" name="message"

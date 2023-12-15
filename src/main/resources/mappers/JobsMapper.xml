@@ -5,7 +5,7 @@
 <mapper namespace="com.example.demo12.mapper.JobsMapper">
 
 
-    <select id="getJobs" resultType="com.example.demo12.model.Jobs">
+    <select id="getJobs" resultType="com.example.demo12.model.Job">
         SELECT *
         FROM JOBS;
     </select>
