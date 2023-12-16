@@ -33,7 +33,7 @@
             JOIN courses C
                 ON H.course_no = C.course_no
             JOIN academys A
-                ON C.academy_no = C.academy_no
+                ON C.academy_no = A.academy_no
             WHERE H.user_id = #{userId}
         MINUS
             SELECT
@@ -43,8 +43,24 @@
             JOIN courses C
                 ON H.course_no = C.course_no
             JOIN academys A
-                ON C.academy_no = C.academy_no
+                ON C.academy_no = A.academy_no
             WHERE R.user_id = #{userId}
+    </select>
+
+    <select id="getAcademyAreas" resultType="com.example.demo12.model.Academy">
+        SELECT
+        distinct(area)
+        FROM academys
+    </select>
+
+    <select id="getCoursesByAreaJob" parameterType="hashmap" resultType="com.example.demo12.model.Course">
+        SELECT course_name, academy_name, area, j_name AS jobName
+        FROM visions V JOIN COURSES C
+        ON V.course_no = C.course_no
+        JOIN academys A
+        ON C.academy_no = A.academy_no
+        WHERE area = #{area}
+        AND j_name = #{jobName}
     </select>
 
 </mapper>

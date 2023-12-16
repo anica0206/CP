@@ -4,7 +4,7 @@ import com.example.demo12.model.Course;
 import com.example.demo12.model.Job;
 import com.example.demo12.model.UserVO;
 import com.example.demo12.service.CourseService;
-import com.example.demo12.service.JobsService;
+import com.example.demo12.service.JobService;
 import com.example.demo12.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,7 @@ public class ProfileController {
     private CourseService courseService;
 
     @Autowired
-    private JobsService jobsService;
+    private JobService jobService;
 
     @RequestMapping("/profile")
     public String toProfilePage(HttpSession session, Model model) {
@@ -33,7 +33,7 @@ public class ProfileController {
             model.addAttribute("user", userVO);
             List<Course> courses = courseService.getCourseList();
             model.addAttribute("courses", courses);
-            List<Job> jobs = jobsService.getJobsList();
+            List<Job> jobs = jobService.getJobList();
             model.addAttribute("jobs", jobs);
 
             return "profile";

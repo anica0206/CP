@@ -244,11 +244,10 @@
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
-						<table  class ="table table-bordered"
+						<table  class ="table table-striped"
 								id ="dataTable"
 								width ="100%"
 								cellspacing="0">
-							<table class="table table-striped">
 								<thead>
 								<tr>
 									<th scope="col">No</th>
@@ -274,7 +273,6 @@
 									type="button"
 									onclick="location.href='/community/boardNew'"
 									class="btn btn-primary">글작성</button>
-						</table>
 					</div>
 				</div>
 			</div>

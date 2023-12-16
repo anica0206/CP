@@ -124,7 +124,7 @@
 
         <!-- Training program recommendation -->
         <li class="nav-item">
-            <a class="nav-link" href="/recommend/">
+            <a class="nav-link" href="/recommend">
                 <i class="fa fa-compass" aria-hidden="true"></i>
                 <span>Program Recommendation</span>
             </a>

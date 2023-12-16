@@ -182,162 +182,6 @@
                     </div>
                 </li>
 
-                <!-- Nav Item - Alerts -->
-                <li class="nav-item dropdown no-arrow mx-1">
-                    <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            id="alertsDropdown"
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false">
-                        <i class="fas fa-bell fa-fw"></i>
-                        <!-- Counter - Alerts -->
-                        <span class="badge badge-danger badge-counter">3+</span>
-                    </a>
-                    <!-- Dropdown - Alerts -->
-                    <div
-                            class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                            aria-labelledby="alertsDropdown">
-                        <h6 class="dropdown-header">Alerts Center</h6>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="mr-3">
-                                <div class="icon-circle bg-primary">
-                                    <i class="fas fa-file-alt text-white"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="small text-gray-500">December 12, 2019</div>
-                                <span class="font-weight-bold"
-                                >A new monthly report is ready to download!</span
-                                >
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="mr-3">
-                                <div class="icon-circle bg-success">
-                                    <i class="fas fa-donate text-white"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="small text-gray-500">December 7, 2019</div>
-                                $290.29 has been deposited into your account!
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="mr-3">
-                                <div class="icon-circle bg-warning">
-                                    <i class="fas fa-exclamation-triangle text-white"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="small text-gray-500">December 2, 2019</div>
-                                Spending Alert: We've noticed unusually high spending for
-                                your account.
-                            </div>
-                        </a>
-                        <a
-                                class="dropdown-item text-center small text-gray-500"
-                                href="#"
-                        >Show All Alerts</a
-                        >
-                    </div>
-                </li>
-
-                <!-- Nav Item - Messages -->
-                <li class="nav-item dropdown no-arrow mx-1">
-                    <a
-                            class="nav-link dropdown-toggle"
-                            href="#"
-                            id="messagesDropdown"
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false">
-                        <i class="fas fa-envelope fa-fw"></i>
-                        <!-- Counter - Messages -->
-                        <span class="badge badge-danger badge-counter">7</span>
-                    </a>
-                    <!-- Dropdown - Messages -->
-                    <div
-                            class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                            aria-labelledby="messagesDropdown">
-                        <h6 class="dropdown-header">Message Center</h6>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                                <img
-                                        class="rounded-circle"
-                                        src="img/undraw_profile_1.svg"
-                                        alt="..." />
-                                <div class="status-indicator bg-success"></div>
-                            </div>
-                            <div class="font-weight-bold">
-                                <div class="text-truncate">
-                                    Hi there! I am wondering if you can help me with a
-                                    problem I've been having.
-                                </div>
-                                <div class="small text-gray-500">Emily Fowler · 58m</div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                                <img
-                                        class="rounded-circle"
-                                        src="img/undraw_profile_2.svg"
-                                        alt="..." />
-                                <div class="status-indicator"></div>
-                            </div>
-                            <div>
-                                <div class="text-truncate">
-                                    I have the photos that you ordered last month, how would
-                                    you like them sent to you?
-                                </div>
-                                <div class="small text-gray-500">Jae Chun · 1d</div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                                <img
-                                        class="rounded-circle"
-                                        src="static/img/undraw_profile_3.svg"
-                                        alt="..." />
-                                <div class="status-indicator bg-warning"></div>
-                            </div>
-                            <div>
-                                <div class="text-truncate">
-                                    Last month's report looks great, I am very happy with
-                                    the progress so far, keep up the good work!
-                                </div>
-                                <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                                <img
-                                        class="rounded-circle"
-                                        src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                        alt="..." />
-                                <div class="status-indicator bg-success"></div>
-                            </div>
-                            <div>
-                                <div class="text-truncate">
-                                    Am I a good boy? The reason I ask is because someone
-                                    told me that people say this to all dogs, even if they
-                                    aren't good...
-                                </div>
-                                <div class="small text-gray-500">
-                                    Chicken the Dog · 2w
-                                </div>
-                            </div>
-                        </a>
-                        <a
-                                class="dropdown-item text-center small text-gray-500"
-                                href="#"
-                        >Read More Messages</a
-                        >
-                    </div>
-                </li>
 
                 <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -386,61 +230,90 @@
                 </li>
             </ul>
         </nav>
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-            <!-- Page Heading -->
-            <h1 class="h3 mb-2 text-gray-800">리뷰게시판</h1>
-            <p class="mb-4">
-                리뷰게시판 입니다. 미풍양속을 해치지 않는 범위 내에서
-                작성해주세요.
-            </p>
+         <!-- Begin Page Content -->
+              <div class="container-fluid">
+                <!-- Page Heading -->
+                <h1 class="h3 mb-2 text-gray-800">훈련과정 추천</h1>
+                <p class="mb-4">
+                  희망하는 직종이랑 지역을 설정 검색 버튼 눌러주세요.
+                </p>
 
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">리뷰게시판</h6>
-                </div>
-                <div class="card-body">
+                <!-- DataTales Example -->
+                <form id="recommend" action="/recommend/getCourses" method="get">
+                <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                    <div class="row justify-content-end">
+                        <div class="col-4">
+                            <select
+                                 id="wantedJob" name="wantedJob"
+                                 class="btn btn-outline-primary dropdown-toggle"
+                                 aria-labelledby="dropdownArea">
+                                <c:forEach items="${jobs}" var="job">
+                                    <option value="${job.jobName}">${job.jobName}</a></li>
+                                </c:forEach>
+
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <div class="row justify-content-start">
+                                <div class="col-4">
+                                    <select
+                                        id="wantedArea" name="wantedArea"
+                                        class="btn btn-outline-primary dropdown-toggle"
+                                        aria-labelledby="dropdownArea">
+
+                                        <c:forEach items="${academys}" var="academy">
+                                            <option value="${academy.area}">${academy.area}</option>
+                                            <p>hihi ${job}</p>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+
+
+                                <button onclick="document.getElementById('recommend').submit()" id="getCourses_btn" class="btn btn-primary">
+                                    <i class="fas fa-search fa-sm"></i>
+                                  </button>
+                                  </div>
+                            </div>
+                            </form>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="card-body">
                     <div class="table-responsive">
-                        <table  class ="table table-striped"
-                                id ="dataTable"
-                                width ="100%"
-                                cellspacing="0">
-                            <thead>
+
+                    </br>
+                    <div class="table-responsive">
+                      <table
+                        class="table table-bordered"
+                        width="100%"
+                        cellspacing="0">
+                        <thead>
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">작성자</th>
-                                <th scope="col">제목</th>
-                                <th scope="col">과정이름</th>
-                                <th scope="col">작성일자</th>
-                                <th scope="col">조회수</th>
-                                <th scope="col">추천수</th>
-                            </tr>
+                                <th></th>
+                                <th>과정이름</th>
+                                <th>학원이름</th>
+                                <th>지역</th>
+                                <th>관련직종</th>
+                              </tr>
                             </thead>
                             <tbody>
-                            <c:forEach items="${reviews}" var="review">
+                            <c:forEach items="${courses}" var="recommend">
                                 <tr>
-                                    <th scope="row">${review.reviewNo}</th>
-                                    <td>${review.userId}</td>
-                                    <td><a href="/review/detail/${review.reviewNo}">${review.title}</a></td>
-                                    <td>${review.courseName}</td>
-                                    <td>${review.drawup}</td>
-                                    <td>${review.referenceNo}</td>
-                                    <td>${review.recommend}</td>
+                                    <th scope="row"></th>
+                                    <td>${recommend.courseName}</td>
+                                    <td>${recommend.academyName}</td>
+                                    <td>${recommend.area}</td>
+                                    <td>${recommend.jobName}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
-                        </table>
-                        <c:choose>
-                            <c:when test="${!empty coursesR}">
-                                <button style= "float : right"
-                                    type="button"
-                                    onclick="location.href='/review/new'"
-                                    class="btn btn-primary">글작성</button>
-                            </c:when>
-                        </c:choose>
+                      </table>
                     </div>
+                  </div>
                 </div>
+              </div>
+              <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->
 
@@ -486,6 +359,8 @@
         </div>
     </div>
 
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="/static/vendor/jquery/jquery.min.js"></script>
     <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -502,6 +377,7 @@
     <!-- Page level custom scripts -->
     <script src="/static/js/demo/chart-area-demo.js"></script>
     <script src="/static/js/demo/chart-pie-demo.js"></script>
+
 
 </body>
 </html>

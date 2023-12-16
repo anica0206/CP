@@ -216,7 +216,6 @@
                                 <img src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png">
                                 <div class="card-body">
                                     <h5 class="card-title">${user.name}</h5>
-                                    <p>${jobs}</p>
                                     <select id="jobs" class="form-select">
                                         <c:forEach items="${jobs}" var="job">
                                             <option value=${job.jobName}>${job.jobName}</option>

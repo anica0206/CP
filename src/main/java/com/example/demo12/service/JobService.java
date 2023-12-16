@@ -1,6 +1,6 @@
 package com.example.demo12.service;
 
-import com.example.demo12.mapper.JobsMapper;
+import com.example.demo12.mapper.JobMapper;
 import com.example.demo12.model.Job;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class JobsService {
+public class JobService {
     @Autowired
-    private JobsMapper jobsMapper;
-    public List<Job> getJobsList(){return jobsMapper.getJobs(); }
+    private JobMapper jobMapper;
+    public List<Job> getJobList(){return jobMapper.getJobs(); }
 
 }
