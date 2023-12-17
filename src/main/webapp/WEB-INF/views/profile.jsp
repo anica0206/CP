@@ -50,81 +50,59 @@
     <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="col-2 navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-            <div class="sidebar-brand-text mx-3">CareerPath <sup></sup></div>
-        </a>
-        <hr class="sidebar-divider my-0">
-        <li class="nav-item active">
-            <a class="nav-link" href="../../../../../../../Desktop/Desktop/sparta-gpt/index.html">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span>
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+                <div class="sidebar-brand-text mx-3">CareerPath <sup></sup></div>
             </a>
-        </li>
-        <hr class="sidebar-divider">
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
 
-        <div class="sidebar-heading">
-            Interface
-        </div>
+            <div class="sidebar-heading">
+                Interface
+            </div>
 
-        <!-- Profile -->
+            <!-- Profile -->
 
-        <li class="nav-item">
-            <a class="nav-link" href="/profile">
-                <i class="fa fa-id-card-o" aria-hidden="true"></i>
-                <span>Profile</span>
-            </a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">
+                    <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
 
-        <!-- Community -->
-        <li class="nav-item">
-            <a class="nav-link" href="/community/list">
-                <i class="fa fa-comments-o" aria-hidden="true"></i>
-                <span>Community</span>
-            </a>
-        </li>
+            <!-- Community -->
+            <li class="nav-item">
+                <a class="nav-link" href="/community/list">
+                    <i class="fa fa-comments-o" aria-hidden="true"></i>
+                    <span>Community</span>
+                </a>
+            </li>
 
-        <!-- training program Review -->
-        <li class="nav-item">
-            <a class="nav-link" href="/review/">
-                <i class="fa fa-wpexplorer" aria-hidden="true"></i>
-                <span>Training Program Review</span>
-            </a>
-        </li>
+            <!-- training program Review -->
+            <li class="nav-item">
+                <a class="nav-link" href="/review/">
+                    <i class="fa fa-wpexplorer" aria-hidden="true"></i>
+                    <span>Training Program Review</span>
+                </a>
+            </li>
 
-        <!-- Training program recommendation -->
-        <li class="nav-item">
-            <a class="nav-link" href="/recommend/">
-                <i class="fa fa-compass" aria-hidden="true"></i>
-                <span>Program Recommendation</span>
-            </a>
-        </li>
+            <!-- Training program recommendation -->
+            <li class="nav-item">
+                <a class="nav-link" href="/recommend">
+                    <i class="fa fa-compass" aria-hidden="true"></i>
+                    <span>Program Recommendation</span>
+                </a>
+            </li>
 
-        <!-- News -->
-        <li class= "nav-item">
-            <a class="nav-link" href="#">
-                <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-                <span>News</span>
-            </a>
-        </li>
+        </ul>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Detail Data
-        </div>
-
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-                <i class="fa fa-area-chart" aria-hidden="true"></i>
-                <span>Charts</span></a>
-        </li>
-    </ul>
-
-    <!-- End of Sidebar -->
+        <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="col-10 d-flex flex-column">

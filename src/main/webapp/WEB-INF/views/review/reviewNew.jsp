@@ -37,7 +37,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="col-2 navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
             <div class="sidebar-brand-text mx-3">CareerPath <sup></sup></div>
         </a>
@@ -55,6 +55,7 @@
         </div>
 
         <!-- Profile -->
+
         <li class="nav-item">
             <a class="nav-link" href="/profile">
                 <i class="fa fa-id-card-o" aria-hidden="true"></i>
@@ -62,7 +63,7 @@
             </a>
         </li>
 
-        <!-- community -->
+        <!-- Community -->
         <li class="nav-item">
             <a class="nav-link" href="/community/list">
                 <i class="fa fa-comments-o" aria-hidden="true"></i>
@@ -80,34 +81,12 @@
 
         <!-- Training program recommendation -->
         <li class="nav-item">
-            <a class="nav-link" href="/recommend/">
+            <a class="nav-link" href="/recommend">
                 <i class="fa fa-compass" aria-hidden="true"></i>
                 <span>Program Recommendation</span>
             </a>
         </li>
 
-        <!-- News -->
-        <li class= "nav-item">
-            <a class="nav-link" href="#">
-                <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-                <span>News</span>
-            </a>
-        </li>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Detail Data
-        </div>
-
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-                <i class="fa fa-area-chart" aria-hidden="true"></i>
-                <span>Charts</span></a>
-        </li>
     </ul>
 
     <!-- End of Sidebar -->

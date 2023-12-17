@@ -1,209 +1,117 @@
-am5.ready(function() {
+
+  am5.ready(function() {
 
 // Create root element
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-var root = am5.Root.new("chartdiv4");
+  var root = am5.Root.new("chartdiv4");
 
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
-root.setThemes([
+  root.setThemes([
   am5themes_Animated.new(root)
-]);
+  ]);
 
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
-var chart = root.container.children.push(
-  am5xy.XYChart.new(root, {
-    panX: true,
-    panY: true,
-    wheelX: "panX",
-    wheelY: "zoomX",
-    layout: root.verticalLayout,
-  pinchZoomX:true
-  })
-);
+  var chart = root.container.children.push(am5xy.XYChart.new(root, {
+  panX: false,
+  panY: false,
+  wheelX: "none",
+  wheelY: "none",
+  paddingLeft: 0
+}));
 
 // Add cursor
 // https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
-var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
-  behavior: "none"
-}));
-cursor.lineY.set("visible", false);
-
-// The data
-var data = [
-  {
-    year: "1930",
-    italy: 1,
-    germany: 5,
-    uk: 3
-  },
-  {
-    year: "1934",
-    italy: 1,
-    germany: 2,
-    uk: 6
-  },
-  {
-    year: "1938",
-    italy: 2,
-    germany: 3,
-    uk: 1
-  },
-  {
-    year: "1950",
-    italy: 3,
-    germany: 4,
-    uk: 1
-  },
-  {
-    year: "1954",
-    italy: 5,
-    germany: 1,
-    uk: 2
-  },
-  {
-    year: "1958",
-    italy: 3,
-    germany: 2,
-    uk: 1
-  },
-  {
-    year: "1962",
-    italy: 1,
-    germany: 2,
-    uk: 3
-  },
-  {
-    year: "1966",
-    italy: 2,
-    germany: 1,
-    uk: 5
-  },
-  {
-    year: "1970",
-    italy: 3,
-    germany: 5,
-    uk: 2
-  },
-  {
-    year: "1974",
-    italy: 4,
-    germany: 3,
-    uk: 6
-  },
-  {
-    year: "1978",
-    italy: 1,
-    germany: 2,
-    uk: 4
-  }
-];
+  var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {}));
+  cursor.lineY.set("visible", false);
 
 // Create axes
 // https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-var xRenderer = am5xy.AxisRendererX.new(root, {});
-xRenderer.grid.template.set("location", 0.5);
-xRenderer.labels.template.setAll({
-  location: 0.5,
-  multiLocation: 0.5
+  var xRenderer = am5xy.AxisRendererX.new(root, {
+  minGridDistance: 30,
+  minorGridEnabled: true
 });
 
-var xAxis = chart.xAxes.push(
-  am5xy.CategoryAxis.new(root, {
-    categoryField: "year",
-    renderer: xRenderer,
-    tooltip: am5.Tooltip.new(root, {})
-  })
-);
-
-xAxis.data.setAll(data);
-
-var yAxis = chart.yAxes.push(
-  am5xy.ValueAxis.new(root, {
-    maxPrecision: 0,
-    renderer: am5xy.AxisRendererY.new(root, {
-      inversed: true
-    })
-  })
-);
-
-// Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-
-function createSeries(name, field) {
-  var series = chart.series.push(
-    am5xy.LineSeries.new(root, {
-      name: name,
-      xAxis: xAxis,
-      yAxis: yAxis,
-      valueYField: field,
-      categoryXField: "year",
-      tooltip: am5.Tooltip.new(root, {
-        pointerOrientation: "horizontal",
-        labelText: "[bold]{name}[/]\n{categoryX}: {valueY}"
-      })
-    })
-  );
-
-
-  series.bullets.push(function() {
-    return am5.Bullet.new(root, {
-      sprite: am5.Circle.new(root, {
-        radius: 5,
-        fill: series.get("fill")
-      })
-    });
-  });
-
-  // create hover state for series and for mainContainer, so that when series is hovered,
-  // the state would be passed down to the strokes which are in mainContainer.
-  series.set("setStateOnChildren", true);
-  series.states.create("hover", {});
-
-  series.mainContainer.set("setStateOnChildren", true);
-  series.mainContainer.states.create("hover", {});
-
-  series.strokes.template.states.create("hover", {
-    strokeWidth: 4
-  });
-
-  series.data.setAll(data);
-  series.appear(1000);
-}
-
-createSeries("Italy", "italy");
-createSeries("Germany", "germany");
-createSeries("UK", "uk");
-
-// Add scrollbar
-// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
-chart.set("scrollbarX", am5.Scrollbar.new(root, {
-  orientation: "horizontal",
-  marginBottom: 20
+  var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+  maxDeviation: 0,
+  categoryField: "name",
+  renderer: xRenderer,
+  tooltip: am5.Tooltip.new(root, {})
 }));
 
-var legend = chart.children.push(
-  am5.Legend.new(root, {
-    centerX: am5.p50,
-    x: am5.p50
-  })
-);
+  xRenderer.grid.template.set("visible", false);
 
-// Make series change state when legend item is hovered
-legend.itemContainers.template.states.create("hover", {});
+  var yRenderer = am5xy.AxisRendererY.new(root, {});
+  var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+  min: 0,
+  max: 100,
+  numberFormat: "#'%'",
+  renderer: yRenderer
+}));
 
-legend.itemContainers.template.events.on("pointerover", function(e) {
-  e.target.dataItem.dataContext.hover();
-});
-legend.itemContainers.template.events.on("pointerout", function(e) {
-  e.target.dataItem.dataContext.unhover();
+  yRenderer.grid.template.setAll({
+  strokeDasharray: [2, 2]
 });
 
-legend.data.setAll(chart.series.values);
+// Create series
+// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+  var series = chart.series.push(am5xy.ColumnSeries.new(root, {
+  name: "Series 1",
+  xAxis: xAxis,
+  yAxis: yAxis,
+  valueYField: "value",
+  sequencedInterpolation: true,
+  categoryXField: "name",
+  tooltip: am5.Tooltip.new(root, { dy: -25, labelText: "{valueY}" })
+}));
+
+
+  series.columns.template.setAll({
+  cornerRadiusTL: 5,
+  cornerRadiusTR: 5,
+  strokeOpacity: 0
+});
+
+  series.columns.template.adapters.add("fill", (fill, target) => {
+  return chart.get("colors").getIndex(series.columns.indexOf(target));
+});
+
+  series.columns.template.adapters.add("stroke", (stroke, target) => {
+  return chart.get("colors").getIndex(series.columns.indexOf(target));
+});
+
+// Set data
+  var data = [
+{
+  name: "2018",
+  value: 82.9
+},
+{
+  name: "2019",
+  value: 86
+},
+{
+  name: "2020",
+  value: 86.8
+},
+{
+  name: "2021",
+  value: 89.1
+},
+{
+  name: "2022",
+  value: 92.4
+}
+  ];
+
+
+  xAxis.data.setAll(data);
+  series.data.setAll(data);
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/
-chart.appear(1000, 100);
+  series.appear(1000);
+  chart.appear(1000, 100);
 
 }); // end am5.ready()

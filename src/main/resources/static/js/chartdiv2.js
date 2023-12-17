@@ -31,8 +31,10 @@ am5.ready(function() {
         wheelX: "none",
         wheelY: "none",
         paddingLeft: 0
+
       })
   );
+
 
 
 // Create axes
@@ -55,6 +57,8 @@ am5.ready(function() {
       am5xy.ValueAxis.new(root, {
         maxDeviation: 0,
         min: 0,
+        max: 100,
+        numberFormat: "#'%'",
         renderer: am5xy.AxisRendererX.new(root, {
           visible: true,
           strokeOpacity: 0.1,
@@ -62,6 +66,7 @@ am5.ready(function() {
         })
       })
   );
+
 
 
 // Create series
@@ -73,7 +78,7 @@ am5.ready(function() {
         yAxis: yAxis,
         valueXField: "value",
         sequencedInterpolation: true,
-        categoryYField: "country"
+        categoryYField: "country",
       })
   );
 
@@ -165,20 +170,21 @@ am5.ready(function() {
 
 // Set data
   var data = [{
-    country: "USA",
-    value: 2025
+
+    country: "2018",
+    value: 72.6
   }, {
-    country: "China",
-    value: 1882
+    country: "2019",
+    value: 73.4
   }, {
-    country: "Japan",
-    value: 1809
+    country: "2020",
+    value: 74.6
   }, {
-    country: "Germany",
-    value: 1322
+    country: "2021",
+    value: 89.1
   }, {
-    country: "UK",
-    value: 1122
+    country: "2022",
+    value: 91.2
   }];
 
   yAxis.data.setAll(data);

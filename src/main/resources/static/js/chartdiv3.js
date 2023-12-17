@@ -4,27 +4,148 @@ am5.ready(function() {
 // https://www.amcharts.com/docs/v5/getting-started/#Root_element
   var root = am5.Root.new("chartdiv3");
 
-
 // Set themes
 // https://www.amcharts.com/docs/v5/concepts/themes/
   root.setThemes([
     am5themes_Animated.new(root)
   ]);
 
-
 // Create chart
 // https://www.amcharts.com/docs/v5/charts/xy-chart/
-  var chart = root.container.children.push(am5xy.XYChart.new(root, {
-    panX: false,
-    panY: false,
-    wheelX: "panX",
-    wheelY: "zoomX",
-    layout: root.verticalLayout
+  var chart = root.container.children.push(
+      am5xy.XYChart.new(root, {
+        panX: true,
+        panY: true,
+        wheelX: "panX",
+        wheelY: "zoomX",
+        layout: root.verticalLayout,
+        pinchZoomX:true
+      })
+  );
+
+// Add cursor
+// https://www.amcharts.com/docs/v5/charts/xy-chart/cursor/
+  var cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+    behavior: "none"
+  }));
+  cursor.lineY.set("visible", false);
+
+// The data
+  var data = [
+    {
+      year: "2018",
+      훈련기관수: 33225,
+      훈련과정수: 199756,
+      훈련과정회차수: 289850
+    },
+    {
+      year: "2019",
+      훈련기관수: 33288,
+      훈련과정수: 171894,
+      훈련과정회차수: 230498
+    },
+    {
+      year: "2020",
+      훈련기관수: 30858,
+      훈련과정수: 144895,
+      훈련과정회차수: 201680
+    },
+    {
+      year: "2021",
+      훈련기관수: 36156,
+      훈련과정수: 153862,
+      훈련과정회차수: 223641
+    },
+    {
+      year: "2022",
+      훈련기관수: 38073,
+      훈련과정수: 163603,
+      훈련과정회차수: 239894
+    }];
+
+// Create axes
+// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
+  var xRenderer = am5xy.AxisRendererX.new(root, {});
+  xRenderer.grid.template.set("location", 0.5);
+  xRenderer.labels.template.setAll({
+    location: 0.5,
+    multiLocation: 0.5
+  });
+
+  var xAxis = chart.xAxes.push(
+      am5xy.CategoryAxis.new(root, {
+        categoryField: "year",
+        renderer: xRenderer,
+        tooltip: am5.Tooltip.new(root, {})
+      })
+  );
+
+  xAxis.data.setAll(data);
+
+  var yAxis = chart.yAxes.push(
+      am5xy.ValueAxis.new(root, {
+        maxPrecision: 0,
+        renderer: am5xy.AxisRendererY.new(root, {
+          inversed: false
+        })
+      })
+  );
+
+// Add series
+// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
+
+  function createSeries(name, field) {
+    var series = chart.series.push(
+        am5xy.LineSeries.new(root, {
+          name: name,
+          xAxis: xAxis,
+          yAxis: yAxis,
+          valueYField: field,
+          categoryXField: "year",
+          tooltip: am5.Tooltip.new(root, {
+            pointerOrientation: "horizontal",
+            labelText: "[bold]{name}[/]\n{categoryX}: {valueY}"
+          })
+        })
+    );
+
+
+    series.bullets.push(function() {
+      return am5.Bullet.new(root, {
+        sprite: am5.Circle.new(root, {
+          radius: 5,
+          fill: series.get("fill")
+        })
+      });
+    });
+
+    // create hover state for series and for mainContainer, so that when series is hovered,
+    // the state would be passed down to the strokes which are in mainContainer.
+    series.set("setStateOnChildren", true);
+    series.states.create("hover", {});
+
+    series.mainContainer.set("setStateOnChildren", true);
+    series.mainContainer.states.create("hover", {});
+
+    series.strokes.template.states.create("hover", {
+      strokeWidth: 4
+    });
+
+    series.data.setAll(data);
+    series.appear(1000);
+  }
+
+  createSeries("훈련기관수", "훈련기관수");
+  createSeries("훈련과정수", "훈련과정수");
+  createSeries("훈련과정회차수", "훈련과정회차수");
+
+// Add scrollbar
+// https://www.amcharts.com/docs/v5/charts/xy-chart/scrollbars/
+  chart.set("scrollbarX", am5.Scrollbar.new(root, {
+    orientation: "horizontal",
+    marginBottom: 20
   }));
 
-
-// Add legend
-// https://www.amcharts.com/docs/v5/charts/xy-chart/legend-xy-series/
   var legend = chart.children.push(
       am5.Legend.new(root, {
         centerX: am5.p50,
@@ -32,94 +153,17 @@ am5.ready(function() {
       })
   );
 
-  var data   = [{
-    "year": "2019",
-    "europe": 264461,
-    "namerica": 468928,
-    "asia": 418037
-  }, {
-    "year": "2022",
-    "europe": 2.6,
-    "namerica": 2.7,
-    "asia": 2.2
-  }, {
-    "year": "2023",
-    "europe": 2.8,
-    "namerica": 2.9,
-    "asia": 2.4
-  }]
+// Make series change state when legend item is hovered
+  legend.itemContainers.template.states.create("hover", {});
 
+  legend.itemContainers.template.events.on("pointerover", function(e) {
+    e.target.dataItem.dataContext.hover();
+  });
+  legend.itemContainers.template.events.on("pointerout", function(e) {
+    e.target.dataItem.dataContext.unhover();
+  });
 
-// Create axes
-// https://www.amcharts.com/docs/v5/charts/xy-chart/axes/
-  var xRenderer = am5xy.AxisRendererX.new(root, {
-    cellStartLocation: 0.1,
-    cellEndLocation: 0.9
-  })
-
-  var xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
-    categoryField: "year",
-    renderer: xRenderer,
-    tooltip: am5.Tooltip.new(root, {})
-  }));
-
-  xRenderer.grid.template.setAll({
-    location: 1
-  })
-
-  xAxis.data.setAll(data);
-
-  var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
-    renderer: am5xy.AxisRendererY.new(root, {
-      strokeOpacity: 0.1
-    })
-  }));
-
-
-// Add series
-// https://www.amcharts.com/docs/v5/charts/xy-chart/series/
-  function makeSeries(name, fieldName) {
-    var series = chart.series.push(am5xy.ColumnSeries.new(root, {
-      name: name,
-      xAxis: xAxis,
-      yAxis: yAxis,
-      valueYField: fieldName,
-      categoryXField: "year"
-    }));
-
-    series.columns.template.setAll({
-      tooltipText: "{name}, {categoryX}:{valueY}",
-      width: am5.percent(90),
-      tooltipY: 0,
-      strokeOpacity: 0
-    });
-
-    series.data.setAll(data);
-
-    // Make stuff animate on load
-    // https://www.amcharts.com/docs/v5/concepts/animations/
-    series.appear();
-
-    series.bullets.push(function() {
-      return am5.Bullet.new(root, {
-        locationY: 0,
-        sprite: am5.Label.new(root, {
-          text: "{valueY}",
-          fill: root.interfaceColors.get("alternativeText"),
-          centerY: 0,
-          centerX: am5.p50,
-          populateText: true
-        })
-      });
-    });
-    legend.data.push(series);
-  }
-
-  makeSeries("구직인원", "europe");
-  makeSeries("구직건수", "namerica");
-  makeSeries("취업건수", "asia");
-
-
+  legend.data.setAll(chart.series.values);
 
 // Make stuff animate on load
 // https://www.amcharts.com/docs/v5/concepts/animations/

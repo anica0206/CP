@@ -43,25 +43,26 @@
   series.data.setAll([
     { value: 10, category: "빅데이터" },
     // { value: 1, category: "게임개발" },
-    // { value: 6, category: "secure coding" },
+    { value: 6, category: "secure coding" },
     { value: 9, category: "AI" },
     // { value: 3, category: "정보처리기사" },
-    // { value: 5, category: "APP" },
-    // { value: 5, category: "AWS" },
+    { value: 5, category: "APP" },
+    { value: 5, category: "AWS" },
     { value: 3, category: "C/C++" },
-    // { value: 4, category: "IoT" },
+    { value: 4, category: "IoT" },
     { value: 30, category: "Java" },
-    // { value: 1, category: "Node.js" },
-    // { value: 1, category: "Linux" },
+    { value: 1, category: "Node.js" },
+    { value: 1, category: "Linux" },
     { value: 17, category: "Python" },
-    // { value: 5, category: "React" },
+    { value: 5, category: "React" },
     { value: 3, category: "Spring" },
     { value: 3, category: "SQL" },
     // { value: 1, category: "SWIFT" },
-    // { value: 11, category: "UIUX" },
+    { value: 11, category: "UIUX" },
     { value: 13, category: "WEB" }
   ]);
-
+    series.labels.template.set("visible", false);
+    series.ticks.template.set("visible", false);
 
 // Create legend
 // https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
@@ -71,8 +72,20 @@
   marginTop: 15,
   marginBottom: 15,
 }));
+    legend.data.setAll(series.dataItems);  //범례 크기
+    legend.markers.template.setAll({
+      width: 10,
+      height: 10
+    });
 
-  legend.data.setAll(series.dataItems);
+    legend.labels.template.setAll({   //범례 폰트 크기
+      fontSize: 10,
+      fontWeight: "500"
+    });
+    legend.valueLabels.template.setAll({
+      fontSize: 10,
+      fontWeight: "500"
+    });
 
 
 // Play initial series animation
