@@ -172,7 +172,7 @@ am5.ready(function() {
   var data = [{
 
     country: "2018",
-    value: 72.6
+    value: 72.0
   }, {
     country: "2019",
     value: 73.4
