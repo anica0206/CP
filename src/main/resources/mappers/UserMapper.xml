@@ -14,13 +14,13 @@
             birthday,
             role
         ) values (
-            #{userId},
-            #{password},
-            #{email},
-            #{name},
-            #{birthday},
-            1
-        )
+                     #{userId},
+                     #{password},
+                     #{email},
+                     #{name},
+                     #{birthday},
+                     1
+                 )
     </insert>
 
     <!-- 아이디 조회 -->
@@ -29,5 +29,19 @@
         FROM USERS
         WHERE user_id = #{userId}
     </select>
+
+    <insert id="insertProfile" parameterType="com.example.demo12.model.Profile">
+        insert into PROFILES(
+            userId,
+            DJob,
+            education,
+            comments
+        ) values (
+                     #{userId},
+                     #{DJob},
+                     #{education},
+                     #{comments}
+                 )
+    </insert>
 
 </mapper>

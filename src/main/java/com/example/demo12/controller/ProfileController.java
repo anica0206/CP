@@ -5,7 +5,7 @@ import com.example.demo12.model.Job;
 import com.example.demo12.model.Profile;
 import com.example.demo12.model.UserVO;
 import com.example.demo12.service.CourseService;
-import com.example.demo12.service.JobsService;
+import com.example.demo12.service.JobService;
 import com.example.demo12.service.ProfileService;
 import com.example.demo12.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class ProfileController {
     private CourseService courseService;
 
     @Autowired
-    private JobsService jobsService;
+    private JobService jobService;
 
     @Autowired
     private ProfileService profileService;
@@ -42,7 +42,7 @@ public class ProfileController {
             model.addAttribute("user", userVO);
             List<Course> courses = courseService.getCourseList();
             model.addAttribute("courses", courses);
-            List<Job> jobs = jobsService.getAllJobs();
+            List<Job> jobs = jobService.getJobList(); //getAllJobs 에러나서 이걸로 고쳤는데 맞나?
             model.addAttribute("jobs", jobs);
 
             return "profile";
@@ -59,8 +59,8 @@ public class ProfileController {
         try {
             // MyBatis 등을 사용하여 데이터베이스에 저장하는 로직 추가
             Profile profile = new Profile();
-            profile.setUser_id(user_id);
-            profile.setD_job(d_job);
+            profile.setUserId(user_id);
+            profile.setDJob(d_job);
             profile.setEducation(education);
             profile.setComments(comments);
 
