@@ -38,6 +38,36 @@
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     <!-- chartdiv1 End-->
+    <!-- 프로필 데이터 저장 -->
+    <script>
+        function saveProfile() {
+            // 프로필 정보를 가져오는 코드
+            var user_id = "${user.name}";
+            var d_job = document.getElementById("jobs").value;
+            var education = document.getElementById("education").value;
+            var comments = document.getElementById("user-comments").value;
+
+            // 프로필 정보를 서버에 전송하는 AJAX 코드
+            $.ajax({
+                type: "POST",
+                url: "/saveProfile", // 저장을 처리할 컨트롤러의 URL
+                data: {
+                    user_id: user_id,
+                    d_job: d_job,
+                    education: education,
+                    comments: comments
+                },
+                success: function (response) {
+                    // 성공적으로 저장되면 수행할 코드
+                    console.log("프로필이 성공적으로 저장되었습니다.");
+                },
+                error: function (error) {
+                    // 저장 중 에러가 발생하면 수행할 코드
+                    console.error("프로필 저장 중 에러가 발생했습니다.", error);
+                }
+            });
+        }
+    </script>
 
 
     <!-- Styles -->
