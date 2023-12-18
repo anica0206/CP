@@ -10,5 +10,5 @@ public class Course {
     private String academyName;
     private String area;
     private String jobName;
-
+    private String rowNum;
 }

@@ -227,9 +227,10 @@
                                  id="wantedJob" name="wantedJob"
                                  class="btn btn-outline-primary dropdown-toggle"
                                  aria-labelledby="dropdownArea">
-                                <c:forEach items="${jobs}" var="job">
-                                    <option value="${job.jobName}">${job.jobName}</option>
-                                </c:forEach>
+                                 <option value="" selected disabled>희망 직종</option>
+                                    <c:forEach items="${jobs}" var="job">
+                                        <option value="${job.jobName}">${job.jobName}</option>
+                                    </c:forEach>
 
                             </select>
                         </div>
@@ -240,11 +241,11 @@
                                         id="wantedArea" name="wantedArea"
                                         class="btn btn-outline-primary dropdown-toggle"
                                         aria-labelledby="dropdownArea">
-
+                                        <option value="" selected disabled>희망 지역</option>
                                         <c:forEach items="${academys}" var="academy">
                                             <option value="${academy.area}">${academy.area}</option>
-                                            <p>hihi ${job}</p>
                                         </c:forEach>
+                                        </optgroup>
                                     </select>
                                 </div>
 
@@ -279,7 +280,7 @@
                             <tbody>
                             <c:forEach items="${courses}" var="recommend">
                                 <tr>
-                                    <th scope="row"></th>
+                                    <th scope="row">${recommend.rowNum}</th>
                                     <td>${recommend.courseName}</td>
                                     <td>${recommend.academyName}</td>
                                     <td>${recommend.area}</td>

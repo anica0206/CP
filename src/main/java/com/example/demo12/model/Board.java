@@ -13,4 +13,5 @@ public class Board {
     private String drawup;
     private int referenceNo;
     private int boardNo;
+    private int rowNum;
 }

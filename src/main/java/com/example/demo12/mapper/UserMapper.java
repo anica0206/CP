@@ -1,7 +1,6 @@
 package com.example.demo12.mapper;
 
 import com.example.demo12.model.Course;
-import com.example.demo12.model.Profile;
 import com.example.demo12.model.UserVO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -14,6 +13,4 @@ public interface UserMapper {
     UserVO getUserById(String userId);
 
     List<Course> getCourses();
-
-    void insertProfile(Profile profile);
 }

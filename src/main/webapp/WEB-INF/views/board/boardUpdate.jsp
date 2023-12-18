@@ -35,7 +35,7 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
-    <input id="board-no" type="hidden" value="${post.boardNo}"/>
+
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
@@ -296,7 +296,7 @@
                     title: $('#board-title').val(),
                     userId: $('#board-username').val(),
                     content: $('#board-content').val(),
-                    boardNo: $('#board-no').val()
+                    boardNo:  ${post.boardNo}
                 }),
                 dataType: "json",
                 success: function (result) {

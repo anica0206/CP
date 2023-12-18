@@ -24,13 +24,13 @@
     <link href="/static/css/sb-admin-2.min.css" type="text/css" rel="stylesheet">
     <script src="/static/https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script src="/static/https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="/static/sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-            crossorigin="anonymous"></script>
+        integrity="/static/sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet"
-          href="/static/https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/easygpt/default.css" />
+        href="/static/https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/easygpt/default.css" />
     <link href="/static/https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/static/css/style.css">
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/static/C:\Users\user\Desktop\Desktop\sparta-gpt\css/style.css">
 
 
     <!--chartdiv1 Resource-->
@@ -38,36 +38,6 @@
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
     <!-- chartdiv1 End-->
-    <!-- 프로필 데이터 저장 -->
-    <script>
-        function saveProfile() {
-            // 프로필 정보를 가져오는 코드
-            var user_id = "${user.name}";
-            var d_job = document.getElementById("jobs").value;
-            var education = document.getElementById("education").value;
-            var comments = document.getElementById("user-comments").value;
-
-            // 프로필 정보를 서버에 전송하는 AJAX 코드
-            $.ajax({
-                type: "POST",
-                url: "/saveProfile", // 저장을 처리할 컨트롤러의 URL
-                data: {
-                    user_id: user_id,
-                    d_job: d_job,
-                    education: education,
-                    comments: comments
-                },
-                success: function (response) {
-                    // 성공적으로 저장되면 수행할 코드
-                    console.log("프로필이 성공적으로 저장되었습니다.");
-                },
-                error: function (error) {
-                    // 저장 중 에러가 발생하면 수행할 코드
-                    console.error("프로필 저장 중 에러가 발생했습니다.", error);
-                }
-            });
-        }
-    </script>
 
 
     <!-- Styles -->
@@ -77,84 +47,62 @@
 
 <body id="page-top">
 <!-- Page Wrapper -->
-<div id="wrapper">
+    <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="col-2 navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-            <div class="sidebar-brand-text mx-3">CareerPath <sup></sup></div>
-        </a>
-        <hr class="sidebar-divider my-0">
-        <li class="nav-item active">
-            <a class="nav-link" href="../../../../../../../Desktop/Desktop/sparta-gpt/index.html">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span>
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+                <div class="sidebar-brand-text mx-3">CareerPath <sup></sup></div>
             </a>
-        </li>
-        <hr class="sidebar-divider">
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
 
-        <div class="sidebar-heading">
-            Interface
-        </div>
+            <div class="sidebar-heading">
+                Interface
+            </div>
 
-        <!-- Profile -->
+            <!-- Profile -->
 
-        <li class="nav-item">
-            <a class="nav-link" href="/profile">
-                <i class="fa fa-id-card-o" aria-hidden="true"></i>
-                <span>Profile</span>
-            </a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">
+                    <i class="fa fa-id-card-o" aria-hidden="true"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
 
-        <!-- Community -->
-        <li class="nav-item">
-            <a class="nav-link" href="/community/list">
-                <i class="fa fa-comments-o" aria-hidden="true"></i>
-                <span>Community</span>
-            </a>
-        </li>
+            <!-- Community -->
+            <li class="nav-item">
+                <a class="nav-link" href="/community/list">
+                    <i class="fa fa-comments-o" aria-hidden="true"></i>
+                    <span>Community</span>
+                </a>
+            </li>
 
-        <!-- training program Review -->
-        <li class="nav-item">
-            <a class="nav-link" href="/review/">
-                <i class="fa fa-wpexplorer" aria-hidden="true"></i>
-                <span>Training Program Review</span>
-            </a>
-        </li>
+            <!-- training program Review -->
+            <li class="nav-item">
+                <a class="nav-link" href="/review/">
+                    <i class="fa fa-wpexplorer" aria-hidden="true"></i>
+                    <span>Training Program Review</span>
+                </a>
+            </li>
 
-        <!-- Training program recommendation -->
-        <li class="nav-item">
-            <a class="nav-link" href="/recommend/">
-                <i class="fa fa-compass" aria-hidden="true"></i>
-                <span>Program Recommendation</span>
-            </a>
-        </li>
+            <!-- Training program recommendation -->
+            <li class="nav-item">
+                <a class="nav-link" href="/recommend">
+                    <i class="fa fa-compass" aria-hidden="true"></i>
+                    <span>Program Recommendation</span>
+                </a>
+            </li>
 
-        <!-- News -->
-        <li class= "nav-item">
-            <a class="nav-link" href="#">
-                <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-                <span>News</span>
-            </a>
-        </li>
+        </ul>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Detail Data
-        </div>
-
-        <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-                <i class="fa fa-area-chart" aria-hidden="true"></i>
-                <span>Charts</span></a>
-        </li>
-    </ul>
-
-    <!-- End of Sidebar -->
+        <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="col-10 d-flex flex-column">
@@ -241,25 +189,20 @@
                 <div class="container mt-5">
                     <div class="row justify-content-center">
                         <!-- 프로필 카드 -->
-                        <div class="card card-custom-size">
-                            <div class="card">
-                                <div style="text-align: center;">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png" width="300" height="300" style="margin: auto; display: block;">
-                                </div>
+                        <div class="col-md-4">
+                            <div class="card" style="width: 18rem">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png">
                                 <div class="card-body">
-                                    <h5 class="card-title">이름: ${user.name}</h5>
+                                    <h5 class="card-title">${user.name}</h5>
                                     <select id="jobs" class="form-select">
-                                        <option value="" selected disabled>희망 직업</option>
                                         <c:forEach items="${jobs}" var="job">
-                                            <option value=${job.jName}>${job.jName}</option>
+                                            <option value=${job.jobName}>${job.jobName}</option>
                                         </c:forEach>
                                     </select>
                                     <%--<h6 class="card-subtitle mb-2 text-muted"> </h6>--%>
                                     <textarea id="board-content" class="form-control" name="message"
-                                              placeholder="자유롭게 입력하세요." rows="7"></textarea> <br>
+                                                                                  placeholder="자유롭게 입력하세요." rows="7"></textarea> <br>
                                     <select id="courses" class="form-select">
-                                        <option value="" selected disabled>수료한 직업 훈련</option>
-                                        <option value="">없음</option>
                                         <c:forEach items="${courses}" var="course">
                                             <option value=${course.courseNo}>${course.courseName} - ${course.academyName}</option>
                                         </c:forEach>
@@ -268,7 +211,6 @@
                                     <select id="education" class="form-select">
                                         <option value="1">대졸</option>
                                         <option value="1">고졸</option>
-                                        <option value="1">중졸 이하</option>
                                     </select>
 
                                     <div style="border-top: 1px solid #dee2e6; margin-top: auto; margin-bottom: 7px;"></div>
@@ -285,15 +227,15 @@
                     </div>
                 </div>
 
-                <!-- Footer -->
+        <!-- Footer -->
 
-                <!-- End of Footer -->
+        <!-- End of Footer -->
 
             </div>
         </div>
     </div>
-</div>
-<!-- End of Content Wrapper -->
+    </div>
+            <!-- End of Content Wrapper -->
 <!-- End of Page Wrapper -->
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
@@ -322,7 +264,7 @@
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <form id="logout" action="/logout" method="post">
-                    <a href="#" onclick="document.getElementById('logout').submit()" class="btn btn-primary">Logout</a>
+                   <a href="#" onclick="document.getElementById('logout').submit()" class="btn btn-primary">Logout</a>
                 </form>
             </div>
         </div>

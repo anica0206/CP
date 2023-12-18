@@ -202,21 +202,30 @@
                                 </td>
                             </tr>
                         </table>
-                        <div class="text-right">
-                            <c:choose>
-                                <c:when test="${user.userId==review.userId}">
-                                    <button id="review-edit-btn" class="btn btn-primary btn-icon-split">
-                                                <span class="text">수정</span>
-                                   </button>
-                                   <button id="review-delete-btn" class="btn btn-primary btn-icon-split">
-                                      <span class="text">삭제</span>
-                                  </button>
-                                </c:when>
-                            </c:choose>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col text-left">
+                                    <button onclick="location.href='/review/detail/${review.reviewNo}/recommend'" id="review-recommend-btn" class="btn btn-primary btn-icon-split">
+                                            <span class="text">추천</span>
+                                    </button>
+                                </div>
+                                <div class="col text-right">
+                                    <c:choose>
+                                        <c:when test="${user.userId==review.userId}">
+                                            <button id="review-edit-btn" class="btn btn-primary btn-icon-split">
+                                                        <span class="text">수정</span>
+                                           </button>
+                                           <button id="review-delete-btn" class="btn btn-primary btn-icon-split">
+                                              <span class="text">삭제</span>
+                                          </button>
+                                        </c:when>
+                                    </c:choose>
 
-                            <button id="review-cancel-btn" class="btn btn-light btn-icon-split">
-                                <span class="text">취소</span>
-                            </button>
+                                    <button id="review-cancel-btn" class="btn btn-light btn-icon-split">
+                                        <span class="text">취소</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

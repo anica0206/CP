@@ -54,11 +54,15 @@
     </select>
 
     <select id="getCoursesByAreaJob" parameterType="hashmap" resultType="com.example.demo12.model.Course">
-        SELECT course_name, academy_name, area, j_name AS jobName
+        SELECT
+            ROW_NUMBER() OVER (
+            ORDER BY C.course_name
+            ) AS "rowNum",
+            course_name, academy_name, area, j_name AS jobName
         FROM visions V JOIN COURSES C
-        ON V.course_no = C.course_no
-        JOIN academys A
-        ON C.academy_no = A.academy_no
+            ON V.course_no = C.course_no
+            JOIN academys A
+            ON C.academy_no = A.academy_no
         WHERE area = #{area}
         AND j_name = #{jobName}
     </select>

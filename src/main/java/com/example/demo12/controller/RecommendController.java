@@ -6,6 +6,7 @@ import com.example.demo12.model.Job;
 import com.example.demo12.model.UserVO;
 import com.example.demo12.service.CourseService;
 import com.example.demo12.service.JobService;
+import com.example.demo12.service.JobsService;
 import com.example.demo12.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

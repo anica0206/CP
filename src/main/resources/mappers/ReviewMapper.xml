@@ -70,4 +70,10 @@
         where review_no = #{reviewNo}
     </delete>
 
+    <update id="updateReviewRecommend" parameterType="com.example.demo12.model.Review">
+        update REVIEWS
+        set recommend = #{recommend}
+        where review_no = #{reviewNo}
+    </update>
+
 </mapper>

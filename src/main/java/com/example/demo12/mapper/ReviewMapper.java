@@ -15,4 +15,5 @@ public interface ReviewMapper {
 
     void updateReviewReferenceNo(Review review);
 
+    void updateReviewRecommend(Review review);
 }

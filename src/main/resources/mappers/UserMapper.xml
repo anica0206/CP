@@ -30,19 +30,4 @@
         WHERE user_id = #{userId}
     </select>
 
-    <!-- 프로필 정보 저장 -->
-    <insert id="insertProfile" parameterType="com.example.demo12.model.Profile">
-        insert into PROFILES(
-            user_id,
-            d_job,
-            education,
-            comments
-        ) values (
-            #{userId},
-            #{d_job},
-            #{education},
-            #{comments}
-        )
-    </insert>
-
 </mapper>

@@ -34,4 +34,7 @@ public class ReviewService {
         reviewMapper.updateReviewReferenceNo(review);
     }
 
+    public void addRecommend(Review review) {
+        reviewMapper.updateReviewRecommend(review);
+    }
 }

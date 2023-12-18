@@ -7,6 +7,9 @@
 
     <select id="getBoards" resultType="com.example.demo12.model.Board">
         SELECT
+        ROW_NUMBER() OVER (
+        ORDER BY board_no
+        ) AS "rowNum",
             board_no,
             user_id,
             title,
