@@ -7,7 +7,7 @@ import java.util.List;
 
 
 @Mapper
-public interface JobMapper {
+public interface JobsMapper {
     List<Job> getJobs();
 
 }
