@@ -217,6 +217,8 @@
                         <div class = "col-sm">
                             <div class="card shadow mb-4">
                             <!-- Area Chart -->
+                                <br>
+                                <h3 align="center">IT계열 구직활동현황</h3>
                                  <div id="chartdiv1"></div>
                             </div>
                         </div>
@@ -229,12 +231,16 @@
                     <div class="row">
                         <div class = "col-sm">
                             <div class="card shadow mb-4">
+                                <br>
+                                <h5 align="center">IT계열 훈련프로그램 취업률</h5>
                                 <div id="chartdiv2"></div> <!-- 삼막대 그래프-->
                             </div>
                         </div>
 
                         <div class = "col-sm">
                             <div class="card shadow mb-4">
+                                <br>
+                                <h5 align="center">IT계열 훈련프로그램 현황</h5>
                                 <div id="chartdiv3"></div> <!--막대글프 -->
                            </div>
                         </div>
@@ -246,11 +252,15 @@
                     <div class="row">
                         <div class="col-sm">
                             <div class="card shadow mb-4">
+                                <br>
+                                <h5 align="center">IT계열 훈련프로그램 이수율</h5>
                                 <div id="chartdiv4"></div>
                             </div>
                         </div>
                         <div class="col-sm">
                             <div class="card shadow mb-4">
+                                <br>
+                                <h5 align="center">훈련프로그램 종류 비율</h5>
                                 <div id="chartdiv5"></div>
                             </div>
                         </div>
