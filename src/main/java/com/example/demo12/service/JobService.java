@@ -8,11 +8,11 @@ import java.util.List;
 
 
 @Service
-public class JobsService {
+public class JobService {
 
     @Autowired
-    private JobsMapper jobsMapper;
+    private JobsMapper jobMapper;
 
-    public List<Job> getJobList() { return jobsMapper.getJobs(); }
+    public List<Job> getJobList() { return jobMapper.getJobs(); }
 
 }
