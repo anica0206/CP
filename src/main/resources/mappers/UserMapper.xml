@@ -44,4 +44,18 @@
                  )
     </insert>
 
+    <insert id="insertProfile" parameterType="com.example.demo12.model.Profile">
+        insert into PROFILES(
+            userId,
+            DJob,
+            education,
+            comments
+        ) values (
+            #{userId},
+            #{DJob},
+            #{education},
+            #{comments}
+                 )
+    </insert>
+
 </mapper>

@@ -13,6 +13,6 @@ public class JobsService {
     @Autowired
     private JobsMapper jobsMapper;
 
-    public List<Job> getAllJobs() { return jobsMapper.getJobs(); }
+    public List<Job> getJobList() { return jobsMapper.getJobs(); }
 
 }
