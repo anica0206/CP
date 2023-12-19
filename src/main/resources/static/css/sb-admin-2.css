@@ -4495,6 +4495,16 @@ input[type="button"].btn-block {
   border-radius: 0.35rem;
 }
 
+.card.card-custom-size {
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  max-height: 1000px;
+  border: 2px solid #ddd; /* 선의 두께와 색상을 조절할 수 있습니다. */
+  border-radius: 8px; /* 선택적으로 테두리를 둥글게 만들 수 있습니다. */
+  padding: 10px; /* 선택적으로 내부 여백을 추가할 수 있습니다. */
+}
+
 .card > hr {
   margin-right: 0;
   margin-left: 0;

@@ -21,7 +21,7 @@
     <!--    Icon template-->
     <script src="https://kit.fontawesome.com/8fd9460f6d.js" crossorigin="anonymous"></script>
     <!-- Custom styles for this template-->
-    <link href="/static/css/sb-admin-2.min.css" type="text/css" rel="stylesheet">
+    <link href="/static/css/sb-admin-2.css" type="text/css" rel="stylesheet">
     <script src="/static/https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
     <script src="/static/https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="/static/sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
@@ -30,7 +30,7 @@
         href="/static/https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/easygpt/default.css" />
     <link href="/static/https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/static/C:\Users\user\Desktop\Desktop\sparta-gpt\css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 
 
     <!--chartdiv1 Resource-->
@@ -177,14 +177,16 @@
                 <div class="container mt-5">
                     <div class="row justify-content-center">
                         <!-- 프로필 카드 -->
-                        <div class="col-md-4">
-                            <div class="card" style="width: 18rem">
-                                <img src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png">
+                        <div class="card-custom-size">
+                            <div class="card">
+                                <div class="text-center">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png" width="300" height="300">
+                                </div>
                                 <div class="card-body">
                                     <h5 class="card-title">${user.name}</h5>
                                     <select id="jobs" class="form-select">
-                                        <c:forEach items="${jobs}" var="job">
-                                            <option value=${job.jobName}>${job.jobName}</option>
+                                        <c:forEach items="${jobList}" var="job">
+                                            <option value=${job.jName}>${job.jName}</option>
                                         </c:forEach>
                                     </select>
                                     <%--<h6 class="card-subtitle mb-2 text-muted"> </h6>--%>
