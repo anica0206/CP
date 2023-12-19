@@ -5,6 +5,7 @@ import com.example.demo12.model.Profile;
 import com.example.demo12.model.UserVO;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -14,5 +15,7 @@ public interface UserMapper {
     UserVO getUserById(String userId);
     List<Course> getCourses();
     void insertProfile(Profile profile);
+
+    Profile getProfiles(String userId);
 
 }

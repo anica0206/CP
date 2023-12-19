@@ -15,7 +15,6 @@ public interface CourseMapper {
     List<Course> getCoursesByUserId(String userId);
     List<Course> getCoursesByUserIdNoReview(String userId);
     List<Academy> getAcademyAreas();
-
     List<Course> getCoursesByAreaJob(HashMap<String, Object> prams);
 }
 

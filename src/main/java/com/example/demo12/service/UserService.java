@@ -7,6 +7,7 @@ import com.example.demo12.model.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -34,4 +35,7 @@ public class UserService {
 
     public void saveProfile(Profile profile) { userMapper.insertProfile(profile); }
 
+    public Profile getProfile(String userId) {
+        return userMapper.getProfiles(userId);
+    }
 }

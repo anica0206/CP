@@ -35,15 +35,31 @@
             user_id,
             d_job,
             comments,
-            course_no,
             education
         ) VALUES (
-            'anica',
-            #{dJob},
+            #{userId},
+            #{job},
             #{comments},
-            #{courseNo},
             #{education}
         )
     </insert>
+
+
+
+    <insert id="insertHistory" parameterType="com.example.demo12.model.Profile">
+        INSERT INTO historys (
+        user_id,
+        course_no
+        ) VALUES (
+        'anica',
+        #{courseNo}
+        )
+    </insert>
+
+    <select id="getProfile" parameterType="String" resultType="com.example.demo12.model.Profile">
+        SELECT *
+        FROM profiles
+        WHERE user_id = #{userId}
+    </select>
 
 </mapper>

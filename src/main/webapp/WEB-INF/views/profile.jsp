@@ -4,7 +4,7 @@
 <html lang="en">
 <html>
 <head>
-    <!-- css,js등등 주소 소스 추가시 /static/을 꼭 붙여줘야함!! -->
+    <!-- css,js등등 주소 재료 추가시 /static/을 꼭 붙여줘야함!! -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,22 +15,13 @@
 
     <!-- Custom fonts for this template-->
     <link href="/static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            type="text/css" rel="stylesheet">
-    <!--    Icon template-->
-    <script src="https://kit.fontawesome.com/8fd9460f6d.js" crossorigin="anonymous"></script>
-    <!-- Custom styles for this template-->
-    <link href="/static/css/sb-admin-2.css" type="text/css" rel="stylesheet">
-    <script src="/static/https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-    <script src="/static/https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="/static/sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet"
-        href="/static/https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/easygpt/default.css" />
-    <link href="/static/https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/static/css/style.css">
+        <link
+                href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+                type="text/css" rel="stylesheet">
+        <!--    Icon template-->
+        <script src="https://kit.fontawesome.com/8fd9460f6d.js" crossorigin="anonymous"></script>
+        <!-- Custom styles for this template-->
+        <link href="/static/css/sb-admin-2.min.css" type="text/css" rel="stylesheet">
 
 
     <!--chartdiv1 Resource-->
@@ -184,9 +175,10 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">${user.name}</h5>
-                                    <select id="jobs" name="dJob" class="form-select">
+                                    <input type="hidden" id="user_id" value="${user.userId}" />
+                                    <select id="jobs" name="jobs" class="form-select">
                                         <c:forEach items="${jobs}" var="job">
-                                            <option value=${job.jobName}>${job.jobName}</option>
+                                            <option value="${job.jobName}">${job.jobName}</option>
                                         </c:forEach>
                                     </select>
                                     <%--<h6 class="card-subtitle mb-2 text-muted"> </h6>--%>
@@ -194,7 +186,7 @@
                                                                      placeholder="자유롭게 입력하세요." rows="7"></textarea> <br>
                                     <select id="courses" name="courseNo" class="form-select">
                                         <c:forEach items="${courses}" var="course">
-                                            <option value=${course.courseNo}>${course.courseName} - ${course.academyName}</option>
+                                            <option value="${course.courseNo}">${course.courseName} - ${course.academyName}</option>
                                         </c:forEach>
                                     </select> <br> <br>
 
@@ -286,15 +278,22 @@
             console.log($('#profile-comments').val());
             console.log($('#jobs option:selected').val());
             console.log($('#education option:selected').val());
+            console.log($('#user_id').val());
+
+            if ($('#profile-comments').val() == '') {
+                alert('빈칸을 작성해주세요.');
+                return;
+            }
+
             $.ajax({
                 type: "post",
                 url: "/profile/add",
                 contentType: 'application/json',
                 data: JSON.stringify({
+                    userId: $('#user_id').val(),
                     education: $('#education option:selected').val(),
-                    comments: $('#profile-comments').val(),
-                    dJob: $('#jobs option:selected').val(),
-                    courseNo: $('#courses option:selected').val()
+                    job: $('#jobs option:selected').val(),
+                    comments: $('#profile-comments').val()
                 }),
                 dataType: "json",
                 success: function (result) {

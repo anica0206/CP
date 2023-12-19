@@ -5,8 +5,7 @@ import lombok.Data;
 @Data
 public class Profile {
     private String userId;
-    private String dJob;
+    private String job;
     private String education;
     private String comments;
-    private long courseNo;
 }

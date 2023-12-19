@@ -64,6 +64,8 @@ public class RecommendController {
 
         String id = (String) session.getAttribute("userId");
         if (id != null) {
+            UserVO userVO = userService.getUserById(id);
+            model.addAttribute("user", userVO);
             List<Academy> areas = courseService.getAcademyAreas();
             model.addAttribute("academys", areas);
             List<Job> jobs = jobService.getJobList();
