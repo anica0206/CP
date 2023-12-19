@@ -112,6 +112,23 @@ public class ReviewController {
         return "redirect:/login";
     }
 
+    @RequestMapping("/review/detail/{reviewNo}/recommend")
+    public String recommend(@PathVariable("reviewNo") int reviewNo, Model model,  HttpSession session) throws Exception {
+
+        String id = (String) session.getAttribute("userId");
+        if (id != null) { // 로그인된 상태
+            UserVO userVO = userService.getUserById(id);
+            model.addAttribute("user", userVO);
+
+            Review review = reviewService.getReviewByReviewNo(reviewNo);
+            review.setRecommend(review.getRecommend()+1);
+            reviewService.addRecommend(review);
+
+            return "redirect:/review";
+        }
+        return "redirect:/login";
+    }
+
     @RequestMapping(value = "/review/add", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, String> add(@RequestBody Review review) {

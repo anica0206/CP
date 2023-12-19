@@ -15,4 +15,5 @@ public class Review {
     private int recommend;
     private String content;
     private String courseName;
+    private String rowNum;
 }
