@@ -185,8 +185,8 @@
                                 <div class="card-body">
                                     <h5 class="card-title">${user.name}</h5>
                                     <select id="jobs" class="form-select">
-                                        <c:forEach items="${jobList}" var="job">
-                                            <option value=${job.jName}>${job.jName}</option>
+                                        <c:forEach items="${jobs}" var="job">
+                                            <option value=${job.jobName}>${job.jobName}</option>
                                         </c:forEach>
                                     </select>
                                     <%--<h6 class="card-subtitle mb-2 text-muted"> </h6>--%>
