@@ -296,7 +296,7 @@
 <script>
     $('#review-edit-btn').on('click', function () {
         if(confirm('글 수정을 하시겠습니까?')) {
-            location.href='/review/edit/' + $('#review-no').val();
+            location.href='/review/edit/' + ${review.reviewNo}
         }
     });
 
@@ -307,7 +307,7 @@
                 url:"/review/delete",
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    reviewNo : $('#review-no').val()
+                    reviewNo : ${review.reviewNo}
                 }),
                 dataType:"json",
                 success:function(result){

@@ -306,7 +306,7 @@
                     courseNo : $("#review-course option:selected").val(),
                     userId : $('#review-username').val(),
                     content : $('#review-content').val(),
-                    reviewNo : $('#review-no').val()
+                    reviewNo : ${review.reviewNo}
                 }),
                 dataType:"json",
                 success:function(result){

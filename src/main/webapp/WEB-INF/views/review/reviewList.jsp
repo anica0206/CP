@@ -188,7 +188,7 @@
                             <tbody>
                             <c:forEach items="${reviews}" var="review">
                                 <tr>
-                                    <th scope="row">${review.reviewNo}</th>
+                                    <th scope="row">${review.rowNum}</th>
                                     <td>${review.userId}</td>
                                     <td><a href="/review/detail/${review.reviewNo}">${review.title}</a></td>
                                     <td>${review.courseName}</td>

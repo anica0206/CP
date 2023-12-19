@@ -6,6 +6,9 @@
 
     <select id="getReviews" resultType="com.example.demo12.model.Review">
         SELECT
+        ROW_NUMBER() OVER (
+        ORDER BY review_no
+        ) AS "rowNum",
             review_no,
             user_id,
             title,
