@@ -12,8 +12,7 @@ import java.util.List;
 public interface UserMapper {
     void insertUser(UserVO userVO); //signUp
     UserVO getUserById(String userId);
-
     List<Course> getCourses();
+    void insertProfile(Profile profile);
 
-    void insertProfile(Profile userVO);
 }

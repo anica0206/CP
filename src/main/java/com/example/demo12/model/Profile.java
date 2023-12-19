@@ -1,19 +1,12 @@
 package com.example.demo12.model;
 
+import lombok.Data;
+
+@Data
 public class Profile {
-    private String user_id;
-    private String d_job;
+    private String userId;
+    private String dJob;
     private String education;
-
-    public void setUserId(String userId) {
-    }
-
-    public void setDJob(String dJob) {
-    }
-
-    public void setEducation(String education) {
-    }
-
-    public void setComments(String comments) {
-    }
+    private String comments;
+    private long courseNo;
 }

@@ -184,32 +184,32 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">${user.name}</h5>
-                                    <select id="jobs" class="form-select">
+                                    <select id="jobs" name="dJob" class="form-select">
                                         <c:forEach items="${jobs}" var="job">
                                             <option value=${job.jobName}>${job.jobName}</option>
                                         </c:forEach>
                                     </select>
                                     <%--<h6 class="card-subtitle mb-2 text-muted"> </h6>--%>
-                                    <textarea id="board-content" class="form-control" name="message"
-                                                                                  placeholder="자유롭게 입력하세요." rows="7"></textarea> <br>
-                                    <select id="courses" class="form-select">
+                                    <textarea id="profile-comments" class="form-control" name="comments"
+                                                                     placeholder="자유롭게 입력하세요." rows="7"></textarea> <br>
+                                    <select id="courses" name="courseNo" class="form-select">
                                         <c:forEach items="${courses}" var="course">
                                             <option value=${course.courseNo}>${course.courseName} - ${course.academyName}</option>
                                         </c:forEach>
                                     </select> <br> <br>
 
-                                    <select id="education" class="form-select">
-                                        <option value="1">대졸</option>
-                                        <option value="1">고졸</option>
+                                    <select id="education" name="education" class="form-select">
+                                        <option value="대졸">대졸</option>
+                                        <option value="고졸">고졸</option>
                                     </select>
 
                                     <div style="border-top: 1px solid #dee2e6; margin-top: auto; margin-bottom: 7px;"></div>
                                     <h6 class="card-subtitle mb-2 text-muted"></h6>
                                     <div style="border-top: 1px solid #dee2e6; margin-top: auto; margin-bottom: 5px;"></div>
                                     <div class="text-end">
-                                        <a href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="background-color: rgba(0, 123, 255, 0.2);">
-                                            저장
-                                        </a>
+                                        <button id="profile-save-btn" class="btn btn-primary btn-icon-split">
+                                            <span class="text">작성</span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -277,6 +277,40 @@
 <!-- Page level custom scripts -->
 <script src="/static/js/demo/chart-area-demo.js"></script>
 <script src="/static/js/demo/chart-pie-demo.js"></script>
+
+<script>
+    $('#profile-save-btn').on('click', function () {
+        if (confirm('글 등록을 하시겠습니까?')) {
+
+            console.log($('#courses option:selected').val());
+            console.log($('#profile-comments').val());
+            console.log($('#jobs option:selected').val());
+            console.log($('#education option:selected').val());
+            $.ajax({
+                type: "post",
+                url: "/profile/add",
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    education: $('#education option:selected').val(),
+                    comments: $('#profile-comments').val(),
+                    dJob: $('#jobs option:selected').val(),
+                    courseNo: $('#courses option:selected').val()
+                }),
+                dataType: "json",
+                success: function (result) {
+                    if (result.result == 'ok') {
+
+                        location.href = '/profile'
+                        //작성후 원래위치로 돌아가게함?
+                    }
+                }
+            });
+
+        }
+    });
+
+
+</script>
 
 </body>
 

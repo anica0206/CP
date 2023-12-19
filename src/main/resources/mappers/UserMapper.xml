@@ -31,16 +31,18 @@
     </select>
 
     <insert id="insertProfile" parameterType="com.example.demo12.model.Profile">
-        insert into PROFILES(
-            userId,
-            DJob,
-            education,
-            comments
-        ) values (
-            #{userId},
-            #{DJob},
-            #{education},
-            #{comments}
+        INSERT INTO profiles (
+            user_id,
+            d_job,
+            comments,
+            course_no,
+            education
+        ) VALUES (
+            'anica',
+            #{dJob},
+            #{comments},
+            #{courseNo},
+            #{education}
         )
     </insert>
 

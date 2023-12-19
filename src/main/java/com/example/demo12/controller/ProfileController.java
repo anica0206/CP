@@ -1,23 +1,19 @@
 package com.example.demo12.controller;
 
-import com.example.demo12.model.Course;
-import com.example.demo12.model.Job;
-import com.example.demo12.model.Profile;
-import com.example.demo12.model.UserVO;
+import com.example.demo12.model.*;
 import com.example.demo12.service.CourseService;
 import com.example.demo12.service.JobService;
-import com.example.demo12.service.ProfileService;
 import com.example.demo12.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ProfileController {
@@ -30,8 +26,6 @@ public class ProfileController {
     @Autowired
     private JobService jobService;
 
-    @Autowired
-    private ProfileService profileService;
 
     //Profile Page view
     @RequestMapping("/profile")
@@ -50,26 +44,28 @@ public class ProfileController {
         return "redirect:/login";
     }
 
-    @PostMapping("/saveProfile")
+
+    @RequestMapping(value = "/profile/add", method = RequestMethod.POST)
     @ResponseBody
-    public String saveProfile(@RequestParam String user_id,
-                              @RequestParam String d_job,
-                              @RequestParam String education,
-                              @RequestParam String comments) {
-        try {
-            // MyBatis 등을 사용하여 데이터베이스에 저장하는 로직 추가
-            Profile profile = new Profile();
-            profile.setUserId(user_id);
-            profile.setDJob(d_job);
-            profile.setEducation(education);
-            profile.setComments(comments);
+    public Map<String, String> saveInfo(@RequestBody Profile profile) {
+        userService.saveProfile(profile);
 
-            profileService.saveInfo(profile);
+        Map<String, String> resultMap = new HashMap<>();
+        resultMap.put("result", "ok");
 
-            return "success";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "error";
-        }
+        return resultMap;
     }
+
+//    @PostMapping("/profile/add")
+//    public String save(Profile profile) { // 회원가입
+//        try {
+//            profileService.saveInfo(profile);
+//        } catch (DuplicateKeyException e) {
+//            return "redirect:/register?error_code=-1";
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return "redirect:/register?error_code=-99";
+//        }
+//        return "redirect:/profile";
+//    }
 }
